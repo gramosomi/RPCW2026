@@ -1,10 +1,10 @@
 # RPCW2026
 
-ID: PG55936
+ID: A100835
 
-Nome: Diogo Ribeiro Vassalo de Abreu
+Nome: Miguel Afonso Gramoso
 
-<img src="images/fotopasse.jpg">
+
 
 ## Lista de Resultados
 
