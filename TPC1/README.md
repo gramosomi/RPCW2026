@@ -1,5 +1,5 @@
 # TPC1 - Ontologia em RDF/OWL
 
-Este trabalho consistiu na modelação de uma ontologia em RDF/OWL, utilizando a sintaxe Turtle (.ttl), com base numa narrativa fornecida na aula.
+Este trabalho consiste na modelação de uma ontologia utilizando a sintaxe Turtle baseada numa narrativa.
 
-O objetivo foi representar semanticamente as entidades presentes na história (pessoas, cursos, línguas, instituições, países...)
+O objetivo é representar as entidades presentes na história...

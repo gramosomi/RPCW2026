@@ -4,7 +4,7 @@ ID: A100835
 
 Nome: Miguel Afonso Gramoso
 
-
+<img src="images/profile.jpg">
 
 ## Lista de Resultados
 
