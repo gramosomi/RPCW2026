@@ -1,0 +1,589 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/cinema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2026/cinema/> .
+
+<http://rpcw.di.uminho.pt/2026/cinema> rdf:type owl:Ontology ;
+                                        rdfs:comment "Uma ontologia sobre cinema" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/cinema#representa
+:representa rdf:type owl:ObjectProperty ;
+            rdfs:domain :Ator ;
+            rdfs:range :Personagem .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#temPersonagem
+:temPersonagem rdf:type owl:ObjectProperty ;
+               rdfs:domain :Filme ;
+               rdfs:range :Personagem .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#éPersonagem
+:éPersonagem rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/atuou
+:atuou rdf:type owl:ObjectProperty ;
+       owl:inverseOf :temAtor .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/compôs
+:compôs rdf:type owl:ObjectProperty ;
+        owl:inverseOf :foiComposta ;
+        rdfs:domain :Pessoa ;
+        rdfs:range :Obra .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/escreveu
+:escreveu rdf:type owl:ObjectProperty ;
+          owl:inverseOf :foiEscrita ;
+          rdfs:domain :Pessoa ;
+          rdfs:range :Obra .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/foiComposta
+:foiComposta rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/foiEscrita
+:foiEscrita rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/realizou
+:realizou rdf:type owl:ObjectProperty ;
+          owl:inverseOf :temRealizador ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Pessoa ;
+          rdfs:range :Filme .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temArgumento
+:temArgumento rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temAtor
+:temAtor rdf:type owl:ObjectProperty ;
+         rdfs:domain :Filme ;
+         rdfs:range :Pessoa .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temGénero
+:temGénero rdf:type owl:ObjectProperty ;
+           rdfs:domain :Filme ;
+           rdfs:range :Género .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temLíngua
+:temLíngua rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temPaísOrigem
+:temPaísOrigem rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temPeçaMusical
+:temPeçaMusical rdf:type owl:ObjectProperty ;
+                rdfs:domain :Filme ;
+                rdfs:range :PeçaMusical .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temRealizador
+:temRealizador rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/cinema#titulo
+:titulo rdf:type owl:DatatypeProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/data
+:data rdf:type owl:DatatypeProperty ;
+      rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/duração
+:duração rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/temSexo
+:temSexo rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Pessoa .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/cinema#FilmeTerror
+:FilmeTerror rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Filme
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :temGénero ;
+                                                          owl:hasValue :G_Terror
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#FilmesAventura
+:FilmesAventura rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Filme
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :temGénero ;
+                                                             owl:hasValue :G_Aventura
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#FilmesInfantis
+:FilmesInfantis rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Filme
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :temGénero ;
+                                                             owl:hasValue :G_Infantil
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#Personagem
+:Personagem rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Argumento
+:Argumento rdf:type owl:Class ;
+           rdfs:subClassOf :Obra .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Ator
+:Ator rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :atuou ;
+                                                   owl:someValuesFrom :Filme
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/AtorFeminino
+:AtorFeminino rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Ator
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :temSexo ;
+                                                           owl:hasValue "F"
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/AtorMasculino
+:AtorMasculino rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Ator
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :temSexo ;
+                                                            owl:hasValue "M"
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Escritor
+:Escritor rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :escreveu ;
+                                                       owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                            owl:unionOf ( :Argumento
+                                                                                          :Livro
+                                                                                        )
+                                                                          ]
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Filme
+:Filme rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :data ;
+                         owl:someValuesFrom xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :duração ;
+                         owl:someValuesFrom xsd:integer
+                       ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/FilmeDramático
+:FilmeDramático rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Filme
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :temGénero ;
+                                                             owl:hasValue :G_Drama
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/FilmeRomântico
+:FilmeRomântico rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Filme
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :temGénero ;
+                                                             owl:hasValue :G_Romance
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Género
+:Género rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( :G_Aventura
+                                          :G_Ação
+                                          :G_Comédia
+                                          :G_Drama
+                                          :G_Ficção
+                                          :G_Infantil
+                                          :G_Romance
+                                          :G_Terror
+                                          :G_Thriller
+                                        )
+                            ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Livro
+:Livro rdf:type owl:Class ;
+       rdfs:subClassOf :Obra .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Língua
+:Língua rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Músico
+:Músico rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :compôs ;
+                                                     owl:someValuesFrom :PeçaMusical
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Obra
+:Obra rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/País
+:País rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Pessoa
+:Pessoa rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/PeçaMusical
+:PeçaMusical rdf:type owl:Class ;
+             rdfs:subClassOf :Obra .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/Realizador
+:Realizador rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Pessoa
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :realizou ;
+                                                         owl:someValuesFrom :Filme
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/cinema#F_ASubstância
+:F_ASubstância rdf:type owl:NamedIndividual ,
+                        :Filme ;
+               :temGénero :G_Drama ,
+                          :G_Terror ;
+               :temLíngua :L_Inglês ;
+               :temPaísOrigem :PO_EstadosUnidos ,
+                              :PO_França ;
+               :titulo "The Substance" ;
+               :data "2024-05-19" ;
+               :duração 141 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#F_Madagascar2
+:F_Madagascar2 rdf:type owl:NamedIndividual ,
+                        :Filme ;
+               :temGénero :G_Aventura ,
+                          :G_Infantil ;
+               :titulo "Madagascar: Escape 2 Africa" ;
+               :data "2008-10-26" ;
+               :duração 89 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Alex
+:PE_Alex rdf:type owl:NamedIndividual ,
+                  :Personagem ;
+         :éPersonagem :F_Madagascar2 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Elisabeth
+:PE_Elisabeth rdf:type owl:NamedIndividual ,
+                       :Personagem ;
+              :éPersonagem :F_ASubstância .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Fred
+:PE_Fred rdf:type owl:NamedIndividual ,
+                  :Personagem ;
+         :éPersonagem :F_ASubstância .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Gloria
+:PE_Gloria rdf:type owl:NamedIndividual ,
+                    :Personagem ;
+           :éPersonagem :F_Madagascar2 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Harvey
+:PE_Harvey rdf:type owl:NamedIndividual ,
+                    :Personagem ;
+           :éPersonagem :F_ASubstância .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Marty
+:PE_Marty rdf:type owl:NamedIndividual ,
+                   :Personagem ;
+          :éPersonagem :F_Madagascar2 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Melman
+:PE_Melman rdf:type owl:NamedIndividual ,
+                    :Personagem ;
+           :éPersonagem :F_Madagascar2 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#PE_Sue
+:PE_Sue rdf:type owl:NamedIndividual ,
+                 :Personagem ;
+        :éPersonagem :F_ASubstância .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_BenStiller
+:P_BenStiller rdf:type owl:NamedIndividual ,
+                       :Pessoa ;
+              :representa :PE_Alex ;
+              :atuou :F_Madagascar2 ;
+              :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_ChrisRock
+:P_ChrisRock rdf:type owl:NamedIndividual ,
+                      :Pessoa ;
+             :representa :PE_Marty ;
+             :atuou :F_Madagascar2 ;
+             :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_DemiMoore
+:P_DemiMoore rdf:type owl:NamedIndividual ,
+                      :Pessoa ;
+             :representa :PE_Elisabeth ;
+             :atuou :F_ASubstância ;
+             :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_DennisQuaid
+:P_DennisQuaid rdf:type owl:NamedIndividual ,
+                        :Pessoa ;
+               :representa :PE_Harvey ;
+               :atuou :F_ASubstância ;
+               :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_EdwardHamilton-Clark
+:P_EdwardHamilton-Clark rdf:type owl:NamedIndividual ,
+                                 :Pessoa ;
+                        :representa :PE_Fred ;
+                        :atuou :F_ASubstância ;
+                        :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema#P_MargaretQualley
+:P_MargaretQualley rdf:type owl:NamedIndividual ,
+                            :Pessoa ;
+                   :representa :PE_Sue ;
+                   :atuou :F_ASubstância ;
+                   :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/A_Twilight
+:A_Twilight rdf:type owl:NamedIndividual ,
+                     :Argumento .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/F_Twilight
+:F_Twilight rdf:type owl:NamedIndividual ,
+                     :Filme ;
+            :temArgumento :A_Twilight ;
+            :temGénero :G_Drama ,
+                       :G_Romance ,
+                       :G_Thriller ;
+            :temLíngua :L_Inglês ;
+            :temPaísOrigem :PO_EstadosUnidos ;
+            :data "2008-12-04" ;
+            :duração 122 .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Aventura
+:G_Aventura rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Ação
+:G_Ação rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Comédia
+:G_Comédia rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Drama
+:G_Drama rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Ficção
+:G_Ficção rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Infantil
+:G_Infantil rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Romance
+:G_Romance rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Terror
+:G_Terror rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/G_Thriller
+:G_Thriller rdf:type owl:NamedIndividual .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/L_Francês
+:L_Francês rdf:type owl:NamedIndividual ,
+                    :Língua .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/L_Inglês
+:L_Inglês rdf:type owl:NamedIndividual ,
+                   :Língua .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/L_Português
+:L_Português rdf:type owl:NamedIndividual ,
+                      :Língua .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/PO_EstadosUnidos
+:PO_EstadosUnidos rdf:type owl:NamedIndividual ,
+                           :País .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/PO_França
+:PO_França rdf:type owl:NamedIndividual ,
+                    :País .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/PO_Inglaterra
+:PO_Inglaterra rdf:type owl:NamedIndividual ,
+                        :País .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/PO_Portugal
+:PO_Portugal rdf:type owl:NamedIndividual ,
+                      :País .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_BillyBurke
+:P_BillyBurke rdf:type owl:NamedIndividual ,
+                       :Pessoa ;
+              :atuou :F_Twilight ;
+              :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_CatherineHardwicke
+:P_CatherineHardwicke rdf:type owl:NamedIndividual ,
+                               :Pessoa ;
+                      :realizou :F_Twilight ;
+                      :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_KristenStewart
+:P_KristenStewart rdf:type owl:NamedIndividual ,
+                           :Pessoa ;
+                  :atuou :F_Twilight ;
+                  :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_MelissaRosenberg
+:P_MelissaRosenberg rdf:type owl:NamedIndividual ,
+                             :Pessoa ;
+                    :escreveu :A_Twilight ;
+                    :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_RobertPattinson
+:P_RobertPattinson rdf:type owl:NamedIndividual ,
+                            :Pessoa ;
+                   :atuou :F_Twilight ;
+                   :temSexo "M" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_SarahClarke
+:P_SarahClarke rdf:type owl:NamedIndividual ,
+                        :Pessoa ;
+               :atuou :F_Twilight ;
+               :temSexo "F" .
+
+
+###  http://rpcw.di.uminho.pt/2026/cinema/P_TaylorLautner
+:P_TaylorLautner rdf:type owl:NamedIndividual ,
+                          :Pessoa ;
+                 :atuou :F_Twilight ;
+                 :temSexo "M" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
