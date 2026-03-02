@@ -2,10 +2,8 @@
 
 # Alterações à Ontologia
 
-- Classe `PratocomPolvo` movida de `owl:Thing` para `PratoCarnívoro`
-- Removido indivíduo `PolvoIngrediente`
-- Substituída propriedade `:temIngrediente PolvoIngrediente` por `:temIngrediente IngredientePolvo` no indivíduo `EnsopadoCanibal`
-- Removidas as propriedades `come EnsopadoCanibal` e `come PratoDoDia` do indivíduo `Aristóteles` pois ambos os pratos continham `Polvo` como `Ingrediente` e `Aristóteles` sendo um `Polvo` não pode comer `PratoComPolvo`
+- Aristóteles não pode comer prato com polvo, por isso não come ensopado nem prato do dia
+- 
 
 # Queries
 
@@ -14,14 +12,14 @@
 Query
 
 ```sparql
-PREFIX : <http://example.org/polvo-filosofico#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-select * where {
-    ?s rdf:type :Cliente .
+SELECT ?cliente
+WHERE {
+  ?cliente rdf:type :Cliente .
 }
+    order by ?nome
 ```
 
-Lista de Cliente Obtida:
+Lista de Clientes:
 
 ```text
 1 :Ana
@@ -32,19 +30,18 @@ Lista de Cliente Obtida:
 6 :Schrodinger
 ```
 
-2. Que pratos serve o restaurante?
+1. Que pratos serve o restaurante?
 
 Query
 
 ```sparql
-PREFIX : <http://example.org/polvo-filosofico#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-select * where {
-    ?s rdf:type :Prato .
+SELECT ?prato
+WHERE {
+  ?prato rdf:type :Prato .
 }
 ```
 
-Lista de Pratos Obtida:
+Lista de Pratos :
 
 ```text
 1 :PratoDoDia
@@ -57,7 +54,7 @@ Lista de Pratos Obtida:
 8 :EnsopadoCanibal
 ```
 
-3. Quais os ingredientes necessários à confeção dos pratos?
+1. Quais os ingredientes necessários à confeção dos pratos?
 
 Query
 
@@ -70,30 +67,18 @@ select DISTINCT ?ing where {
 }
 ```
 
-Lista de Ingredientes obtida:
+![alt text](image.png)
 
-```text
-1 :IngredientePolvo
-2 :Alface
-3 :Tomate
-4 :Tofu
-5 :Cogumelos
-6 :CarneVaca
-7 :Peixe
-8 :PolvoIngrediente
-```
-
-4. Há funcionários que também sejam clientes?
+1. Há funcionários que também sejam clientes?
 
 Query
 
 ```sparql
-PREFIX : <http://example.org/polvo-filosofico#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-select ?nome where {
-    ?nome a :Funcionario;
-          a :Cliente .
-}  
+SELECT ?pessoa
+WHERE {
+  ?pessoa rdf:type :Funcionario .
+  ?pessoa rdf:type :Cliente .
+}
 ```
 
 Lista de Funcionários que também são clientes obtida:
