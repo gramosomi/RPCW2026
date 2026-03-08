@@ -1,0 +1,1146 @@
+
+@prefix : <http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ontologies/2026/biblioteca_temporal> .
+
+<http://www.semanticweb.org/ontologies/2026/biblioteca_temporal> rdf:type owl:Ontology .
+
+### Object Properties ###
+
+:pertenceA rdf:type owl:ObjectProperty ;
+           rdfs:domain :Livro ;
+           rdfs:range :Biblioteca .
+
+:escritoPor rdf:type owl:ObjectProperty ;
+            owl:inverseOf :escreve ;
+            rdfs:domain :Livro ;
+            rdfs:range :Autor .
+
+:escreve rdf:type owl:ObjectProperty ;
+         owl:propertyDisjointWith :requisita .
+
+:existeEm rdf:type owl:ObjectProperty ;
+          rdfs:domain :Livro ;
+          rdfs:range :LinhaTemporal .
+
+:requisita rdf:type owl:ObjectProperty ;
+           rdfs:domain :Leitor ;
+           rdfs:range :Livro .
+
+:ocorreEm rdf:type owl:ObjectProperty ;
+          rdfs:domain :Evento ;
+          rdfs:range :LinhaTemporal .
+
+:trabalhaEm rdf:type owl:ObjectProperty ;
+            rdfs:domain :Bibliotecario ;
+            rdfs:range :Biblioteca .
+
+:refere rdf:type owl:ObjectProperty ;
+        rdfs:domain :Livro ;
+        rdfs:range :Evento .
+
+### Classes ###
+
+:Agente rdf:type owl:Class .
+:EntidadeTemporal rdf:type owl:Class .
+:Biblioteca rdf:type owl:Class .
+
+:Pessoa rdf:type owl:Class ;
+        rdfs:subClassOf :Agente .
+
+:Bibliotecario rdf:type owl:Class ;
+               rdfs:subClassOf :Pessoa ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :trabalhaEm ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Biblioteca
+                               ] .
+
+:Leitor rdf:type owl:Class ;
+        rdfs:subClassOf :Pessoa .
+
+:Autor rdf:type owl:Class ;
+       rdfs:subClassOf :Pessoa .
+
+:Livro rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :existeEm ;
+                         owl:someValuesFrom :LinhaTemporal
+                       ] .
+
+:LivroHistorico rdf:type owl:Class ;
+                rdfs:subClassOf :Livro ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :refere ;
+                                  owl:allValuesFrom :EventoHistorico
+                                ] ;
+                owl:disjointWith :LivroFiccional .
+
+:LivroFiccional rdf:type owl:Class ;
+                rdfs:subClassOf :Livro ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :refere ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:complementOf :EventoHistorico
+                                                    ]
+                                ] .
+
+:LivroParadoxal rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Class ;
+                                      owl:intersectionOf ( :Livro
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :existeEm ;
+                                                             owl:someValuesFrom :LinhaOriginal
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :existeEm ;
+                                                             owl:someValuesFrom :LinhaAlternativa
+                                                           ]
+                                                         )
+                                    ] .
+
+:LinhaTemporal rdf:type owl:Class .
+
+:LinhaOriginal rdf:type owl:Class ;
+               rdfs:subClassOf :LinhaTemporal .
+
+:LinhaAlternativa rdf:type owl:Class ;
+                  rdfs:subClassOf :LinhaTemporal .
+
+:Evento rdf:type owl:Class .
+
+:EventoHistorico rdf:type owl:Class ;
+                 rdfs:subClassOf :Evento .
+
+:EventoFuturo rdf:type owl:Class ;
+              rdfs:subClassOf :Evento .
+#################################################################
+#    Individuals Generated from Multiple JSON Sources
+#################################################################
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Original_Prime
+:Linha_Original_Prime rdf:type owl:NamedIndividual , :LinhaOriginal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Original_00
+:Linha_Original_00 rdf:type owl:NamedIndividual , :LinhaOriginal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Alt_A
+:Linha_Alt_A rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Alt_Omega
+:Linha_Alt_Omega rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Alt_Recursiva
+:Linha_Alt_Recursiva rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Biblioteca_Central_do_Tempo
+:Biblioteca_Central_do_Tempo rdf:type owl:NamedIndividual , :Biblioteca .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Arquivo_do_Vazio_Temporal
+:Arquivo_do_Vazio_Temporal rdf:type owl:NamedIndividual , :Biblioteca .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Descobrimento_da_America
+:Descobrimento_da_America rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Revolucao_Industrial
+:Revolucao_Industrial rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Primeiro_Voo
+:Primeiro_Voo rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Queda_do_Muro
+:Queda_do_Muro rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Crise_de_1929
+:Crise_de_1929 rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Nascimento_da_IA
+:Nascimento_da_IA rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Guerra_dos_Nanobots
+:Guerra_dos_Nanobots rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Extincao_da_Fome
+:Extincao_da_Fome rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Contato_Sirius
+:Contato_Sirius rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Explosao_Solar_2100
+:Explosao_Solar_2100 rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Arnaldo
+:Arnaldo rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Central_do_Tempo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Sibilina
+:Sibilina rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Central_do_Tempo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Eustachio
+:Eustachio rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Arquivo_do_Vazio_Temporal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Clarice
+:Clarice rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Arquivo_do_Vazio_Temporal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Dante_B
+:Dante_B rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Central_do_Tempo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_1
+:Autor_1 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_2
+:Autor_2 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_3
+:Autor_3 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_4
+:Autor_4 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_5
+:Autor_5 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_6
+:Autor_6 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_7
+:Autor_7 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_8
+:Autor_8 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_9
+:Autor_9 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_10
+:Autor_10 rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_1
+:Leitor_1 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_2
+:Leitor_2 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_3
+:Leitor_3 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_4
+:Leitor_4 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_5
+:Leitor_5 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_6
+:Leitor_6 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_7
+:Leitor_7 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_8
+:Leitor_8 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_9
+:Leitor_9 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_10
+:Leitor_10 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_11
+:Leitor_11 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_12
+:Leitor_12 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_13
+:Leitor_13 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_14
+:Leitor_14 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_15
+:Leitor_15 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_001
+:Livro_001 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_10 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_00, :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_002
+:Livro_002 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_4 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_003
+:Livro_003 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_4 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Nascimento_da_IA ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_004
+:Livro_004 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_5 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Descobrimento_da_America ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_005
+:Livro_005 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_10 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_006
+:Livro_006 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_007
+:Livro_007 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_5 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_008
+:Livro_008 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_4 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Extincao_da_Fome ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_009
+:Livro_009 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_010
+:Livro_010 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_10 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Nascimento_da_IA ;
+    :existeEm :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_011
+:Livro_011 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_6 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_012
+:Livro_012 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_013
+:Livro_013 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_014
+:Livro_014 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_3 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_015
+:Livro_015 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_10 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_016
+:Livro_016 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_017
+:Livro_017 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_018
+:Livro_018 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_019
+:Livro_019 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_1 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_020
+:Livro_020 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_5 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Nascimento_da_IA ;
+    :existeEm :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_021
+:Livro_021 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_022
+:Livro_022 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Nascimento_da_IA ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_023
+:Livro_023 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_8 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_024
+:Livro_024 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_025
+:Livro_025 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_5 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_026
+:Livro_026 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_5 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Descobrimento_da_America ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_027
+:Livro_027 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_6 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_028
+:Livro_028 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_4 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Queda_do_Muro ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_029
+:Livro_029 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_030
+:Livro_030 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_1 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Contato_Sirius ;
+    :existeEm :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_031
+:Livro_031 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_00, :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_032
+:Livro_032 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_8 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_033
+:Livro_033 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_034
+:Livro_034 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_035
+:Livro_035 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_036
+:Livro_036 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Original_00, :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_037
+:Livro_037 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_6 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Extincao_da_Fome ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_038
+:Livro_038 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_3 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Explosao_Solar_2100 ;
+    :existeEm :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_039
+:Livro_039 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Extincao_da_Fome ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_040
+:Livro_040 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_3 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_041
+:Livro_041 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Descobrimento_da_America ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_042
+:Livro_042 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Crise_de_1929 ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_043
+:Livro_043 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_1 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Contato_Sirius ;
+    :existeEm :Linha_Original_Prime, :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_044
+:Livro_044 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_045
+:Livro_045 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_8 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Revolucao_Industrial ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_046
+:Livro_046 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_6 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Contato_Sirius ;
+    :existeEm :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_047
+:Livro_047 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_1 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Descobrimento_da_America ;
+    :existeEm :Linha_Original_00 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_048
+:Livro_048 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_4 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Extincao_da_Fome ;
+    :existeEm :Linha_Original_00, :Linha_Alt_Recursiva .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_049
+:Livro_049 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_7 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Extincao_da_Fome ;
+    :existeEm :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_050
+:Livro_050 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_9 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Descobrimento_da_America ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_051
+:Livro_051 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Primeiro_Voo ;
+    :existeEm :Linha_Original_Prime .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_052
+:Livro_052 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_3 ;
+    :pertenceA :Arquivo_do_Vazio_Temporal ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Original_00, :Linha_Alt_A .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_053
+:Livro_053 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_2 ;
+    :pertenceA :Biblioteca_Central_do_Tempo ;
+    :refere :Guerra_dos_Nanobots ;
+    :existeEm :Linha_Alt_Omega .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Alpha_0
+:Linha_Alpha_0 rdf:type owl:NamedIndividual , :LinhaOriginal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Beta_0
+:Linha_Beta_0 rdf:type owl:NamedIndividual , :LinhaOriginal .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Gama_Alt
+:Linha_Gama_Alt rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Delta_Alt
+:Linha_Delta_Alt rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Linha_Epsilon_Alt
+:Linha_Epsilon_Alt rdf:type owl:NamedIndividual , :LinhaAlternativa .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Biblioteca_Infinita
+:Biblioteca_Infinita rdf:type owl:NamedIndividual , :Biblioteca .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Torre_do_Conhecimento
+:Torre_do_Conhecimento rdf:type owl:NamedIndividual , :Biblioteca .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Cofre_do_Tempo_Perdido
+:Cofre_do_Tempo_Perdido rdf:type owl:NamedIndividual , :Biblioteca .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Nascimento_do_Sol
+:Nascimento_do_Sol rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Extincao_Dino
+:Extincao_Dino rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Pax_Romana
+:Pax_Romana rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Renascimento
+:Renascimento rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Exploracao_Espacial
+:Exploracao_Espacial rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Crise_das_Tulipas
+:Crise_das_Tulipas rdf:type owl:NamedIndividual , :EventoHistorico .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Cura_da_Mortalidade
+:Cura_da_Mortalidade rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Viagem_Intergalactica
+:Viagem_Intergalactica rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#IA_Autoconsfiente
+:IA_Autoconsfiente rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Fim_da_Escassez
+:Fim_da_Escassez rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Dominio_da_Energia_Livre
+:Dominio_da_Energia_Livre rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Primeira_Cidade_Submarina
+:Primeira_Cidade_Submarina rdf:type owl:NamedIndividual , :EventoFuturo .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Zeno
+:Zeno rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Infinita .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Hypatia_II
+:Hypatia_II rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Torre_do_Conhecimento .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Boecio
+:Boecio rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Infinita .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Cassiodoro
+:Cassiodoro rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Infinita .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Ptolomeu_X
+:Ptolomeu_X rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Biblioteca_Infinita .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Aurelio
+:Aurelio rdf:type owl:NamedIndividual , :Bibliotecario ;
+    :trabalhaEm :Cofre_do_Tempo_Perdido .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_A
+:Autor_A rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_B
+:Autor_B rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_C
+:Autor_C rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_D
+:Autor_D rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_E
+:Autor_E rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_F
+:Autor_F rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_G
+:Autor_G rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_H
+:Autor_H rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_I
+:Autor_I rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Autor_J
+:Autor_J rdf:type owl:NamedIndividual , :Autor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_1
+:Leitor_Vip_1 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_2
+:Leitor_Vip_2 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_3
+:Leitor_Vip_3 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_4
+:Leitor_Vip_4 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_5
+:Leitor_Vip_5 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_6
+:Leitor_Vip_6 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_7
+:Leitor_Vip_7 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_8
+:Leitor_Vip_8 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_9
+:Leitor_Vip_9 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_10
+:Leitor_Vip_10 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_11
+:Leitor_Vip_11 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_12
+:Leitor_Vip_12 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_13
+:Leitor_Vip_13 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Leitor_Vip_14
+:Leitor_Vip_14 rdf:type owl:NamedIndividual , :Leitor .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_001
+:Livro_Temporal_001 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Pax_Romana ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_002
+:Livro_Temporal_002 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_D ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_003
+:Livro_Temporal_003 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_I ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Renascimento ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_004
+:Livro_Temporal_004 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_H ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Crise_das_Tulipas ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_005
+:Livro_Temporal_005 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Exploracao_Espacial ;
+    :existeEm :Linha_Beta_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_006
+:Livro_Temporal_006 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_007
+:Livro_Temporal_007 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_008
+:Livro_Temporal_008 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Alpha_0, :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_009
+:Livro_Temporal_009 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_010
+:Livro_Temporal_010 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_011
+:Livro_Temporal_011 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_012
+:Livro_Temporal_012 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_013
+:Livro_Temporal_013 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Pax_Romana ;
+    :existeEm :Linha_Beta_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_014
+:Livro_Temporal_014 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_G ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_015
+:Livro_Temporal_015 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Fim_da_Escassez ;
+    :existeEm :Linha_Beta_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_016
+:Livro_Temporal_016 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_017
+:Livro_Temporal_017 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_B ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Cura_da_Mortalidade ;
+    :existeEm :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_018
+:Livro_Temporal_018 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_019
+:Livro_Temporal_019 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_H ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Cura_da_Mortalidade ;
+    :existeEm :Linha_Alpha_0, :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_020
+:Livro_Temporal_020 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_D ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Exploracao_Espacial ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_021
+:Livro_Temporal_021 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_D ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Fim_da_Escassez ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_022
+:Livro_Temporal_022 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_D ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_023
+:Livro_Temporal_023 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_024
+:Livro_Temporal_024 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Renascimento ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_025
+:Livro_Temporal_025 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_G ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Crise_das_Tulipas ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_026
+:Livro_Temporal_026 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_C ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Alpha_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_027
+:Livro_Temporal_027 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Crise_das_Tulipas ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_028
+:Livro_Temporal_028 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Crise_das_Tulipas ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_029
+:Livro_Temporal_029 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Pax_Romana ;
+    :existeEm :Linha_Beta_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_030
+:Livro_Temporal_030 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Beta_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_031
+:Livro_Temporal_031 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_I ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Pax_Romana ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_032
+:Livro_Temporal_032 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_F ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Crise_das_Tulipas ;
+    :existeEm :Linha_Alpha_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_033
+:Livro_Temporal_033 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_I ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Primeira_Cidade_Submarina ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_034
+:Livro_Temporal_034 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_H ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Fim_da_Escassez ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_035
+:Livro_Temporal_035 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_B ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_036
+:Livro_Temporal_036 rdf:type owl:NamedIndividual , :LivroHistorico ;
+    :escritoPor :Autor_I ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Beta_0 .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_037
+:Livro_Temporal_037 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_B ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Extincao_Dino ;
+    :existeEm :Linha_Beta_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_038
+:Livro_Temporal_038 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Exploracao_Espacial ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_039
+:Livro_Temporal_039 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Primeira_Cidade_Submarina ;
+    :existeEm :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_040
+:Livro_Temporal_040 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_A ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Nascimento_do_Sol ;
+    :existeEm :Linha_Beta_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_041
+:Livro_Temporal_041 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_C ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Cura_da_Mortalidade ;
+    :existeEm :Linha_Beta_0, :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_042
+:Livro_Temporal_042 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Dominio_da_Energia_Livre ;
+    :existeEm :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_043
+:Livro_Temporal_043 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_C ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Beta_0, :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_044
+:Livro_Temporal_044 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_B ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :IA_Autoconsfiente ;
+    :existeEm :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_045
+:Livro_Temporal_045 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_G ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :IA_Autoconsfiente ;
+    :existeEm :Linha_Beta_0, :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_046
+:Livro_Temporal_046 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_C ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Cura_da_Mortalidade ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_047
+:Livro_Temporal_047 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_H ;
+    :pertenceA :Cofre_do_Tempo_Perdido ;
+    :refere :Exploracao_Espacial ;
+    :existeEm :Linha_Beta_0, :Linha_Gama_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_048
+:Livro_Temporal_048 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_E ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Epsilon_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_049
+:Livro_Temporal_049 rdf:type owl:NamedIndividual , :LivroFiccional ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Biblioteca_Infinita ;
+    :refere :Viagem_Intergalactica ;
+    :existeEm :Linha_Delta_Alt .
+
+###  http://www.semanticweb.org/ontologies/2026/biblioteca_temporal#Livro_Temporal_050
+:Livro_Temporal_050 rdf:type owl:NamedIndividual , :LivroParadoxal ;
+    :escritoPor :Autor_J ;
+    :pertenceA :Torre_do_Conhecimento ;
+    :refere :Pax_Romana ;
+    :existeEm :Linha_Alpha_0, :Linha_Delta_Alt .
+
