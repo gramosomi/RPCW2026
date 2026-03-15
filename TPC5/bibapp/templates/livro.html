@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ livro.titulo }}{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-teal w3-padding-16">
+    <h2><i class="fa fa-book w3-margin-right"></i>{{ livro.titulo }}</h2>
+</div>
+
+<div class="w3-container w3-padding-32">
+
+    <div class="w3-card-4 w3-white w3-padding-24 w3-margin-bottom">
+        <h3><i class="fa fa-info-circle w3-margin-right"></i>Informação do Livro</h3>
+        <table class="w3-table w3-bordered">
+            <tr>
+                <td><b>ID</b></td>
+                <td>{{ livro.id }}</td>
+            </tr>
+            <tr>
+                <td><b>Título</b></td>
+                <td>{{ livro.titulo }}</td>
+            </tr>
+            <tr>
+                <td><b>Tipo</b></td>
+                <td>
+                    {% if livro.tipo == "LivroParadoxal" %}
+                        <span class="w3-tag w3-round w3-purple">{{ livro.tipo }}</span>
+                    {% elif livro.tipo == "LivroFiccional" %}
+                        <span class="w3-tag w3-round w3-blue">{{ livro.tipo }}</span>
+                    {% elif livro.tipo == "LivroHistorico" %}
+                        <span class="w3-tag w3-round w3-orange">{{ livro.tipo }}</span>
+                    {% else %}
+                        <span class="w3-tag w3-round w3-grey">{{ livro.tipo }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><b>Autor</b></td>
+                <td>{{ livro.autor }}</td>
+            </tr>
+            <tr>
+                <td><b>País</b></td>
+                <td>{{ livro.pais }}</td>
+            </tr>
+            <tr>
+                <td><b>Linhas Temporais</b></td>
+                <td>
+                    {% for linha in livro.linhas %}
+                        <span class="w3-tag w3-round w3-teal w3-margin-right">{{ linha }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    {% if livro.eventos %}
+    <div class="w3-card-4 w3-white w3-padding-24">
+        <h3><i class="fa fa-bolt w3-margin-right"></i>Eventos Referidos</h3>
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-light-blue">
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in livro.eventos %}
+                <tr>
+                    <td><code>{{ e.id }}</code></td>
+                    <td>
+                        <a href="/evento/{{ e.id }}" class="w3-text-teal" style="text-decoration:none">
+                            <b>{{ e.nome }}</b>
+                        </a>
+                    </td>
+                    <td>{{ e.descricao }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
+        <p>Este livro não referencia nenhum evento registado.</p>
+    </div>
+    {% endif %}
+
+    <div class="w3-margin-top">
+        <a href="/livros" class="w3-button w3-teal w3-round">
+            <i class="fa fa-arrow-left w3-margin-right"></i>Voltar ao Catálogo
+        </a>
+    </div>
+
+</div>
+{% endblock %}

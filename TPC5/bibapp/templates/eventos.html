@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-teal w3-padding-16">
+    <h2><i class="fa fa-bolt w3-margin-right"></i>Eventos Temporais</h2>
+</div>
+
+<div class="w3-container w3-padding-32">
+    {% for e in eventos %}
+    <div id="{{ e.id }}" class="w3-card-4 w3-white w3-margin-bottom">
+        <div class="w3-container w3-light-blue w3-padding-12">
+            <h4 class="w3-margin-0">
+                <i class="fa fa-clock-o w3-margin-right"></i>{{ e.designacao }}
+                <small class="w3-text-grey" style="font-size:0.7em; margin-left:8px">{{ e.id }}</small>
+            </h4>
+        </div>
+        <div class="w3-container w3-padding-16">
+            {% if e.descricao %}
+            <p>{{ e.descricao }}</p>
+            {% endif %}
+
+            {% if e.livros %}
+            <p><b><i class="fa fa-book w3-margin-right"></i>Livros que referenciam este evento:</b></p>
+            <ul class="w3-ul w3-border" style="max-width:600px">
+                {% for l in e.livros %}
+                <li>
+                    <a href="/livro/{{ l.id }}" class="w3-text-teal" style="text-decoration:none">
+                        {{ l.titulo }}
+                    </a>
+                    <span class="w3-text-grey" style="font-size:0.85em"> ({{ l.id }})</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="w3-text-grey"><i>Nenhum livro referencia este evento.</i></p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
