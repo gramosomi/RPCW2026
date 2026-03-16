@@ -1,6 +1,6 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 
-GRAPHDB_ENDPOINT = "http://localhost:7200/repositories/biblioteca_temporal"
+GRAPHDB_ENDPOINT = "http://localhost:7200/repositories/temporal_biblio"
 
 def execute_query(query):
     sparql = SPARQLWrapper(GRAPHDB_ENDPOINT)
