@@ -1,0 +1,119 @@
+11.a) Quantas doenças estão presentes na ontologia? 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT (COUNT(DISTINCT ?disease) AS ?totalDiseases)
+WHERE {
+    ?disease a :Disease .
+}
+
+11.b) Que doenças estão associadas ao sintoma "yellowish_skin"? 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease
+WHERE {
+    ?disease a :Disease ;
+             :hasSymptom :yellowish_skin .
+}
+
+11.c) Que doenças estão associadas ao tratamento "exercise"? 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease
+WHERE {
+    ?disease a :Disease ;
+             :hasTreatment :exercise .
+}
+
+11.d) Produz uma lista ordenada alfabeticamente com o nome dos doentes. 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?name
+WHERE {
+    ?patient a :Patient ;
+             :name ?name .
+}
+ORDER BY ASC(?name)
+
+12) Cria uma query CONSTRUCT que diagnostique a doença de cada pessoa.
+
+PREFIX : <http://www.example.org/disease-ontology#>
+
+CONSTRUCT {
+    ?patient :hasDisease ?disease .
+}
+WHERE {
+
+    ?patient a :Patient .
+    ?disease a :Disease .
+
+    ?disease :hasSymptom [] .
+
+    FILTER NOT EXISTS {
+        ?disease :hasSymptom ?symptom .
+        FILTER NOT EXISTS {
+            ?patient :exhibitsSymptom ?symptom .
+        }
+    }
+}
+
+12.1) Insert dos triplos
+
+PREFIX : <http://www.example.org/disease-ontology#>
+
+INSERT {
+    ?patient :hasDisease ?disease .
+}
+WHERE {
+    ?patient a :Patient .
+    ?disease a :Disease .
+    
+    ?disease :hasSymptom [] .
+
+    FILTER NOT EXISTS {
+        ?disease :hasSymptom ?symptom .
+        FILTER NOT EXISTS {
+            ?patient :exhibitsSymptom ?symptom .
+        }
+    }
+}
+
+
+
+13) Distribuição dos doentes pelas doenças (lista de pares: doença, nº de doentes). 
+
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease (COUNT(DISTINCT ?patient) AS ?numPatients)
+WHERE {
+    ?patient :hasDisease ?disease .
+}
+GROUP BY ?disease
+
+14) Distribuição das doenças pelos sintomas (lista de pares: sintoma, nº de doenças com o sintoma). 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?symptom (COUNT(DISTINCT ?disease) AS ?numDiseases)
+WHERE {
+    ?disease :hasSymptom ?symptom .
+}
+GROUP BY ?symptom
+
+15) Distribuição das doenças pelos tratamentos (lista de pares: tratamento, nº de doenças com o tratamento). 
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?treatment (COUNT(DISTINCT ?disease) AS ?numDiseases)
+WHERE {
+    ?disease :hasTreatment ?treatment .
+}
+GROUP BY ?treatment
+
+16) Lista das doenças e respetivos sintomas (lista de pares: doença, lista de sintomas). 
+
+
+PREFIX : <http://www.example.org/disease-ontology#>
+SELECT ?disease (GROUP_CONCAT(REPLACE(STR(?symptom), "http://www.example.org/disease-ontology#", ""); separator=", ") AS ?symptomsList)
+WHERE {
+    ?disease a :Disease ;
+             :hasSymptom ?symptom .
+}
+GROUP BY ?disease
