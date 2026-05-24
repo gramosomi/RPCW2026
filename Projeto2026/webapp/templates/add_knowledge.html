@@ -4,16 +4,20 @@
 {% block page_heading %}Adicionar Conhecimento{% endblock %}
 
 {% block content %}
-<div class="grid-2">
-    <div class="card">
-        <h3>Inserção guiada de conhecimento</h3>
-        <p class="muted">
-            Este formulário adiciona padrões frequentes de conhecimento, criando automaticamente as relações necessárias.
+<div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
+    <div class="card table-wrapper" style="padding: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <img src="{{ url_for('static', filename='icons2/knowledge_book.png') }}" onerror="this.src='{{ url_for('static', filename='icons/enchanted_book.png') }}'" class="mc-icon" alt="Knowledge" style="width: 24px; height: 24px;">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin: 0; color: #333;">Inserção Guiada</h3>
+        </div>
+        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">
+            Este formulário adiciona padrões frequentes de conhecimento, criando automaticamente as relações bidirecionais necessárias.
         </p>
 
         <form method="post" class="styled-form">
             <label for="knowledge_type">Tipo de conhecimento</label>
-            <select name="knowledge_type" id="knowledge_type">
+            <select name="knowledge_type" id="knowledge_type" style="width: 100%; margin-bottom: 15px;">
                 <option value="mob_drop">Drop de mob</option>
                 <option value="mob_spawn">Spawn de mob em bioma</option>
                 <option value="structure_biome">Estrutura em bioma</option>
@@ -24,69 +28,66 @@
                 <option value="sunlight_burn">Mob arde à luz do sol</option>
             </select>
 
-            <label for="primary_value" id="primary_label">Mob</label>
+            <label for="primary_value" id="primary_label" style="margin-top: 10px;">Mob</label>
             <input
                 type="text"
                 name="primary_value"
                 id="primary_value"
                 placeholder="Ex.: creeper"
                 required
+                style="width: 100%; margin-bottom: 15px;"
             >
 
-            <div id="secondary_group">
+            <div id="secondary_group" style="margin-bottom: 15px;">
                 <label for="secondary_value" id="secondary_label">Item</label>
                 <input
                     type="text"
                     name="secondary_value"
                     id="secondary_value"
                     placeholder="Ex.: gunpowder"
+                    style="width: 100%;"
                 >
             </div>
 
-            <div id="boolean_group" style="display: none;">
+            <div id="boolean_group" style="display: none; margin-bottom: 15px;">
                 <label for="boolean_value" id="boolean_label">Valor booleano</label>
-                <select name="boolean_value" id="boolean_value">
+                <select name="boolean_value" id="boolean_value" style="width: 100%;">
                     <option value="true">true</option>
                     <option value="false">false</option>
                 </select>
             </div>
 
-            <button type="submit" class="button button-primary">Inserir conhecimento</button>
+            <button type="submit" class="button button-primary" style="width: 100%; margin-top: 10px;">Craftar Conhecimento</button>
         </form>
 
         {% if message %}
-        <div class="status-box">
-            {{ message }}
+        <div class="mini-stat" style="margin-top: 20px; background-color: #111; border: 2px solid #333; box-shadow: inset 2px 2px 0px 0px #000; padding: 12px;">
+            <span style="color: #55ff55; font-family: var(--font-pixel); font-size: 10px; line-height: 1.5;">> {{ message }}</span>
         </div>
         {% endif %}
     </div>
 
     <div class="card">
-        <h3>Exemplos</h3>
+        <div class="home-feature-card" style="height: 100%;">
+            <h3>Manual do Servidor</h3>
+            <p style="font-size: 13px; margin-bottom: 20px;">
+                Este modo é mais seguro do que a inserção genérica, porque valida os tipos esperados dos recursos.
+            </p>
 
-        <p class="muted">
-            <strong>Drop de mob</strong>
-            <br>
-            <code>creeper drops gunpowder</code>
-            <br>
-            Também insere:
-            <br>
-            <code>gunpowder droppedBy creeper</code>
-        </p>
+            <div class="code-box" style="margin-bottom: 15px;">
+                <span style="color: #ffaa00;">// Exemplo: Drop de Mob</span><br>
+                > creeper drops gunpowder<br>
+                > gunpowder droppedBy creeper<br>
+                <span style="color: #777777;">[INVERSE LINK ESTABLISHED]</span>
+            </div>
 
-        <p class="muted">
-            <strong>Spawn de mob</strong>
-            <br>
-            <code>creeper spawnsIn plains</code>
-            <br>
-            Também insere:
-            <br>
-            <code>plains hasSpawn creeper</code>
-        </p>
-
-        <p class="muted">
-            Este modo é mais seguro do que a inserção genérica, porque valida os tipos esperados dos recursos.
-        </p>
+            <div class="code-box">
+                <span style="color: #ffaa00;">// Exemplo: Spawn de Mob</span><br>
+                > creeper spawnsIn plains<br>
+                > plains hasSpawn creeper<br>
+                <span style="color: #777777;">[INVERSE LINK ESTABLISHED]</span>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -5,16 +5,22 @@
 
 {% block content %}
 <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    
     <div class="card table-wrapper" style="padding: 20px;">
-        <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px;">Nova Relação (Object Property)</h3>
-        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Liga dois indivíduos existentes na ontologia.</p>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <img src="{{ url_for('static', filename='icons2/lead.png') }}" class="mc-icon" alt="Relation" style="width: 24px; height: 24px;">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin: 0; color: #333;">Nova Relação (Triple)</h3>
+        </div>
+        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">
+            Liga dois indivíduos existentes ou atribui um valor literal na ontologia.
+        </p>
 
         <form method="post" class="styled-form">
             <label for="subject">Sujeito</label>
-            <input type="text" name="subject" id="subject" placeholder="Ex.: creeper" required>
+            <input type="text" name="subject" id="subject" placeholder="Ex.: creeper" required style="width: 100%; margin-bottom: 15px;">
 
             <label for="predicate">Predicado</label>
-            <select name="predicate" id="predicate" required>
+            <select name="predicate" id="predicate" required style="width: 100%; margin-bottom: 15px;">
                 {% for prop in properties %}
                 <option value="{{ prop.name }}">
                     {{ prop.name }} — {{ prop.type }}
@@ -23,50 +29,59 @@
             </select>
 
             <label for="object_kind">Tipo de objeto</label>
-            <select name="object_kind" id="object_kind">
+            <select name="object_kind" id="object_kind" style="width: 100%; margin-bottom: 15px;">
                 <option value="resource">Recurso da ontologia</option>
                 <option value="literal">Literal</option>
             </select>
 
-            <label for="object">Objeto</label>
-            <input type="text" name="object" id="object" placeholder="Ex.: plains ou true" required>
+            <label for="object">Objeto / Valor</label>
+            <input type="text" name="object" id="object" placeholder="Ex.: plains ou true" required style="width: 100%; margin-bottom: 15px;">
 
             <label for="literal_type">Tipo do literal</label>
-            <select name="literal_type" id="literal_type">
+            <select name="literal_type" id="literal_type" style="width: 100%; margin-bottom: 15px;">
                 <option value="string">string</option>
                 <option value="integer">integer</option>
                 <option value="float">float</option>
                 <option value="boolean">boolean</option>
             </select>
 
-            <button type="submit" class="button button-primary">Inserir triple</button>
+            <button type="submit" class="button button-primary" style="width: 100%; margin-top: 10px;">Inserir Triple</button>
         </form>
 
         {% if message %}
-        <div class="status-box">
-            {{ message }}
+        <div class="mini-stat" style="margin-top: 20px; background-color: #111; border: 2px solid #333; box-shadow: inset 2px 2px 0px 0px #000; padding: 12px;">
+            <span style="color: #55ff55; font-family: var(--font-pixel); font-size: 10px; line-height: 1.5;">> {{ message }}</span>
         </div>
         {% endif %}
     </div>
 
     <div class="card">
-        <h3>Exemplo</h3>
-        <div class="code-box">
-            <code>creeper spawnsIn plains</code>
+        <div class="home-feature-card" style="height: 100%;">
+            <h3>Manual do Servidor</h3>
+            <p style="font-size: 13px; margin-bottom: 20px;">
+                O sistema de inferência valida automaticamente a correção semântica dos comandos introduzidos.
+            </p>
+
+            <div class="code-box" style="margin-bottom: 15px;">
+                <span style="color: #ffaa00;">// Válido (Recurso)</span><br>
+                > creeper spawnsIn plains<br>
+                <span style="color: #55ff55;">[LINK ESTABLISHED]</span>
+            </div>
+
+            <div class="code-box" style="margin-bottom: 15px;">
+                <span style="color: #ffaa00;">// Válido (Literal)</span><br>
+                > sand affectedByGravity true<br>
+                <span style="color: #55ff55;">[DATA SAVED]</span>
+            </div>
+
+            <div class="code-box" style="background-color: #1a0505; border-color: #3b1111;">
+                <span style="color: #ffaa00;">// Rejeitados pela Validação</span><br>
+                > creeper spawnsIn gunpowder<br>
+                <span style="color: #ff5555;">[ERRO: spawnsIn espera Biome]</span><br><br>
+                > sand affectedByGravity plains<br>
+                <span style="color: #ff5555;">[ERRO: espera literal booleano]</span>
+            </div>
         </div>
-
-        <p class="muted">
-            Exemplos válidos:
-            <br>creeper spawnsIn plains
-            <br>sand affectedByGravity true
-            <br>diamond_ore requiresMinTier Iron
-        </p>
-
-        <p class="muted">
-            Exemplos rejeitados pela validação:
-            <br><code>creeper spawnsIn gunpowder</code>, porque <code>spawnsIn</code> espera um <code>Biome</code>.
-            <br><code>sand affectedByGravity plains</code>, porque <code>affectedByGravity</code> espera literal booleano.
-        </p>
     </div>
 </div>
 {% endblock %}
