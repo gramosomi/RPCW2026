@@ -10,37 +10,63 @@
         <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Liga dois indivíduos existentes na ontologia.</p>
 
         <form method="post" class="styled-form">
-            <label for="subject_name">Sujeito (Recurso Origem)</label>
-            <input type="text" name="subject_name" id="subject_name" placeholder="Ex.: zombie" required>
+            <label for="subject">Sujeito</label>
+            <input type="text" name="subject" id="subject" placeholder="Ex.: creeper" required>
 
-            <label for="predicate" style="margin-top: 15px;">Predicado (Relação)</label>
-            <input type="text" name="predicate" id="predicate" placeholder="Ex.: dropsItem" required>
+            <label for="predicate">Predicado</label>
+            <select name="predicate" id="predicate" required>
+                {% for prop in properties %}
+                <option value="{{ prop.name }}">
+                    {{ prop.name }} — {{ prop.type }}
+                </option>
+                {% endfor %}
+            </select>
 
-            <label for="object_name" style="margin-top: 15px;">Objeto (Recurso Destino)</label>
-            <input type="text" name="object_name" id="object_name" placeholder="Ex.: rotten_flesh" required>
+            <label for="object_kind">Tipo de objeto</label>
+            <select name="object_kind" id="object_kind">
+                <option value="resource">Recurso da ontologia</option>
+                <option value="literal">Literal</option>
+            </select>
 
-            <button type="submit" class="button button-primary" style="margin-top: 20px; width: 100%;">Criar Relação</button>
+            <label for="object">Objeto</label>
+            <input type="text" name="object" id="object" placeholder="Ex.: plains ou true" required>
+
+            <label for="literal_type">Tipo do literal</label>
+            <select name="literal_type" id="literal_type">
+                <option value="string">string</option>
+                <option value="integer">integer</option>
+                <option value="float">float</option>
+                <option value="boolean">boolean</option>
+            </select>
+
+            <button type="submit" class="button button-primary">Inserir triple</button>
         </form>
 
         {% if message %}
-        <div class="mini-stat" style="margin-top: 20px;">
-            <span class="mini-stat-label">System Output</span>
-            <span class="mini-stat-value" style="font-size: 12px;">{{ message }}</span>
+        <div class="status-box">
+            {{ message }}
         </div>
         {% endif %}
     </div>
 
     <div class="card">
-        <div class="home-feature-card">
-            <h3>Command Output</h3>
-            <div class="code-box">
-                > zombie dropsItem rotten_flesh<br>
-                > LINK ESTABLISHED
-            </div>
-            <p style="font-size: 14px; margin-bottom: 10px;">
-                Isto criará uma ligação do tipo Object Property entre dois indivíduos distintos (que já devem existir na ontologia).
-            </p>
+        <h3>Exemplo</h3>
+        <div class="code-box">
+            <code>creeper spawnsIn plains</code>
         </div>
+
+        <p class="muted">
+            Exemplos válidos:
+            <br>creeper spawnsIn plains
+            <br>sand affectedByGravity true
+            <br>diamond_ore requiresMinTier Iron
+        </p>
+
+        <p class="muted">
+            Exemplos rejeitados pela validação:
+            <br><code>creeper spawnsIn gunpowder</code>, porque <code>spawnsIn</code> espera um <code>Biome</code>.
+            <br><code>sand affectedByGravity plains</code>, porque <code>affectedByGravity</code> espera literal booleano.
+        </p>
     </div>
 </div>
 {% endblock %}

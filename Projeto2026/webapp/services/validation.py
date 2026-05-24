@@ -28,6 +28,7 @@ def require_local_name(value, field_name):
     value = (value or "").strip()
 
     if not is_valid_local_name(value):
+        print("teste")
         raise ValueError(f"{field_name} inválido.")
 
     return value
