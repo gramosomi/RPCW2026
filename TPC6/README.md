@@ -1,6 +1,4 @@
-# Biblioteca Temporal — Aplicação Web v2
- 
-## Novidades desta versão
+# Biblioteca Temporal
  
 ### Novas Rotas
  
@@ -18,23 +16,7 @@ Página de detalhe de uma linha temporal com:
 - Tabela com os livros que existem nessa linha (id, título com link, tipo com tag colorida)
 - Botão **Voltar às Linhas Temporais** (`/linhas`)
 - Botão **Página Inicial** (`/livros`)
- 
----
- 
-### Ficheiros Modificados
- 
-**`app.py`**
-- Adicionada rota `/linhas`
-- Adicionada rota `/linha/<id_linha>`
-- Adicionada rota `/livros` em paralelo com `/` para o catálogo
- 
-**`layout.html`**
-- Novo botão "Linhas Temporais" na navbar com link para `/linhas`
- 
-**`livro.html`**
-- Tags de linhas temporais tornadas clicáveis, com link para `/linha/<id>`
- 
----
+
  
 ### Novos Templates
  
