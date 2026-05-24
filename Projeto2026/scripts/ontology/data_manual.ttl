@@ -1,0 +1,280 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Chainmail a :MaterialTier ;
+    :hasName "Chainmail"^^xsd:string ;
+    :tierOrder 2 .
+
+:Copper a :MaterialTier ;
+    :hasName "Copper"^^xsd:string ;
+    :tierOrder 3 .
+
+:Gold a :MaterialTier ;
+    :hasName "Gold"^^xsd:string ;
+    :tierOrder 5 .
+
+:Leather a :MaterialTier ;
+    :hasName "Leather"^^xsd:string ;
+    :tierOrder 1 .
+
+:Netherite a :MaterialTier ;
+    :hasName "Netherite"^^xsd:string ;
+    :tierOrder 7 .
+
+:Turtle a :MaterialTier ;
+    :hasName "Turtle"^^xsd:string ;
+    :tierOrder 3 .
+
+:ancient_debris :requiresMinTier :Diamond .
+
+:anvil a :GravityBlock ;
+    :affectedByGravity true .
+
+:chipped_anvil a :GravityBlock ;
+    :affectedByGravity true .
+
+:coal_ore :requiresMinTier :Wood .
+
+:copper_ore :requiresMinTier :Stone .
+
+:damaged_anvil a :GravityBlock ;
+    :affectedByGravity true .
+
+:diamond_ore :requiresMinTier :Iron .
+
+:drowned :isBurnableInSunlight false ;
+    :isImmuneToFire false .
+
+:emerald_ore :requiresMinTier :Iron .
+
+:ghast :isBurnableInSunlight false ;
+    :isImmuneToFire true .
+
+:gold_ore :requiresMinTier :Iron .
+
+:gravel a :GravityBlock ;
+    :affectedByGravity true .
+
+:iron_ore :requiresMinTier :Stone .
+
+:lapis_ore :requiresMinTier :Stone .
+
+:magma_cube :isBurnableInSunlight false ;
+    :isImmuneToFire true .
+
+:overworld a :Dimension ;
+    :hasDisplayName "Overworld"^^xsd:string ;
+    :hasName "overworld"^^xsd:string .
+
+:red_sand a :GravityBlock ;
+    :affectedByGravity true .
+
+:redstone_ore :requiresMinTier :Iron .
+
+:sand a :GravityBlock ;
+    :affectedByGravity true .
+
+:stone :requiresMinTier :Wood .
+
+:suspicious_gravel a :GravityBlock ;
+    :affectedByGravity true .
+
+:suspicious_sand a :GravityBlock ;
+    :affectedByGravity true .
+
+:ancient_city a :NaturalStructure,
+        :Structure ;
+    :generatesIn :deep_dark ;
+    :hasName "ancient_city"^^xsd:string .
+
+:arrow :droppedBy :skeleton .
+
+:beef :droppedBy :cow .
+
+:blaze_rod :droppedBy :blaze .
+
+:bone :droppedBy :skeleton .
+
+:crimson_forest :hasStructure :bastion_remnant .
+
+:deep_dark :hasStructure :ancient_city .
+
+:desert_pyramid a :NaturalStructure,
+        :Structure ;
+    :generatesIn :desert ;
+    :hasName "desert_pyramid"^^xsd:string .
+
+:end a :Dimension ;
+    :hasDisplayName "The End"^^xsd:string ;
+    :hasName "end"^^xsd:string ;
+    :requiredToEnter :ender_eye .
+
+:end_city a :DimensionalStructure,
+        :Structure ;
+    :generatesIn :the_end ;
+    :hasName "end_city"^^xsd:string .
+
+:ender_eye :opensAccess :end .
+
+:ender_pearl :droppedBy :enderman .
+
+:feather :droppedBy :chicken .
+
+:flint_and_steel :opensAccess :nether .
+
+:gunpowder :droppedBy :creeper .
+
+:leather :droppedBy :cow .
+
+:mutton :droppedBy :sheep .
+
+:obsidian :opensAccess :nether ;
+    :requiresMinTier :Diamond .
+
+:rotten_flesh :droppedBy :zombie .
+
+:savanna :hasStructure :village .
+
+:spider :drops :string .
+
+:string :droppedBy :spider .
+
+:white_wool :droppedBy :sheep .
+
+:Diamond a :MaterialTier ;
+    :hasName "Diamond"^^xsd:string ;
+    :tierOrder 6 .
+
+:Wood a :MaterialTier ;
+    :hasName "Wood"^^xsd:string ;
+    :tierOrder 1 .
+
+:nether a :Dimension ;
+    :hasDisplayName "Nether"^^xsd:string ;
+    :hasName "nether"^^xsd:string ;
+    :requiredToEnter :flint_and_steel,
+        :obsidian .
+
+:nether_fortress a :DimensionalStructure,
+        :Structure ;
+    :generatesIn :nether_wastes,
+        :soul_sand_valley ;
+    :hasName "nether_fortress"^^xsd:string .
+
+:the_end :hasSpawn :enderman ;
+    :hasStructure :end_city .
+
+:warped_forest :hasSpawn :enderman ;
+    :hasStructure :bastion_remnant .
+
+:Stone a :MaterialTier ;
+    :hasName "Stone"^^xsd:string ;
+    :tierOrder 2 .
+
+:blaze :drops :blaze_rod ;
+    :isBurnableInSunlight false ;
+    :isImmuneToFire true ;
+    :spawnsIn :nether_wastes,
+        :soul_sand_valley .
+
+:enderman :drops :ender_pearl ;
+    :spawnsIn :the_end,
+        :warped_forest .
+
+:nether_wastes :hasSpawn :blaze ;
+    :hasStructure :bastion_remnant,
+        :nether_fortress .
+
+:soul_sand_valley :hasSpawn :blaze ;
+    :hasStructure :bastion_remnant,
+        :nether_fortress .
+
+:Iron a :MaterialTier ;
+    :hasName "Iron"^^xsd:string ;
+    :tierOrder 4 .
+
+:bastion_remnant a :DimensionalStructure,
+        :Structure ;
+    :generatesIn :crimson_forest,
+        :nether_wastes,
+        :soul_sand_valley,
+        :warped_forest ;
+    :hasName "bastion_remnant"^^xsd:string .
+
+:cow :drops :beef,
+        :leather ;
+    :spawnsIn :forest,
+        :plains .
+
+:village a :NaturalStructure,
+        :Structure ;
+    :generatesIn :desert,
+        :plains,
+        :savanna,
+        :taiga ;
+    :hasName "village"^^xsd:string .
+
+:chicken :droppedBy :chicken ;
+    :drops :chicken,
+        :feather ;
+    :spawnsIn :forest,
+        :plains .
+
+:creeper :drops :gunpowder ;
+    :isBurnableInSunlight false ;
+    :isImmuneToFire false ;
+    :spawnsIn :desert,
+        :forest,
+        :plains,
+        :taiga .
+
+:desert :hasSpawn :creeper,
+        :skeleton,
+        :zombie ;
+    :hasStructure :desert_pyramid,
+        :village .
+
+:sheep :drops :mutton,
+        :white_wool ;
+    :spawnsIn :forest,
+        :plains,
+        :taiga .
+
+:taiga :hasSpawn :creeper,
+        :sheep,
+        :skeleton,
+        :zombie ;
+    :hasStructure :village .
+
+:zombie :drops :rotten_flesh ;
+    :isBurnableInSunlight true ;
+    :isImmuneToFire false ;
+    :spawnsIn :desert,
+        :forest,
+        :plains,
+        :taiga .
+
+:forest :hasSpawn :chicken,
+        :cow,
+        :creeper,
+        :sheep,
+        :skeleton,
+        :zombie .
+
+:skeleton :drops :arrow,
+        :bone ;
+    :isBurnableInSunlight true ;
+    :isImmuneToFire false ;
+    :spawnsIn :desert,
+        :forest,
+        :plains,
+        :taiga .
+
+:plains :hasSpawn :chicken,
+        :cow,
+        :creeper,
+        :sheep,
+        :skeleton,
+        :zombie ;
+    :hasStructure :village .
+

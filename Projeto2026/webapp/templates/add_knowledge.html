@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Conhecimento{% endblock %}
+{% block page_heading %}Adicionar Conhecimento{% endblock %}
+
+{% block content %}
+<div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="card table-wrapper" style="padding: 20px;">
+        <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px;">Novo Atributo Literal</h3>
+        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Adiciona uma Data Property a um indivíduo.</p>
+
+        <form method="post" class="styled-form">
+            <label for="subject_name">Sujeito (Recurso)</label>
+            <input type="text" name="subject_name" id="subject_name" placeholder="Ex.: diamond_sword" required>
+
+            <label for="predicate" style="margin-top: 15px;">Predicado (Propriedade)</label>
+            <input type="text" name="predicate" id="predicate" placeholder="Ex.: hasDurability" required>
+
+            <label for="literal_value" style="margin-top: 15px;">Valor Literal</label>
+            <input type="text" name="literal_value" id="literal_value" placeholder="Ex.: 1561" required>
+
+            <button type="submit" class="button button-primary" style="margin-top: 20px; width: 100%;">Registrar Conhecimento</button>
+        </form>
+
+        {% if message %}
+        <div class="mini-stat" style="margin-top: 20px;">
+            <span class="mini-stat-label">System Output</span>
+            <span class="mini-stat-value" style="font-size: 12px;">{{ message }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="home-feature-card">
+            <h3>Command Output</h3>
+            <div class="code-box">
+                > diamond_sword hasDurability "1561"<br>
+                > QUERY EXECUTED
+            </div>
+            <p style="font-size: 14px; margin-bottom: 10px;">
+                Isto criará uma ligação do tipo Data Property entre o recurso e o valor.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

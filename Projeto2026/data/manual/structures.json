@@ -1,0 +1,8 @@
+[
+  {"name": "village", "type": "NaturalStructure", "biomes": ["plains", "desert", "savanna", "taiga"]},
+  {"name": "desert_pyramid", "type": "NaturalStructure", "biomes": ["desert"]},
+  {"name": "ancient_city", "type": "NaturalStructure", "biomes": ["deep_dark"]},
+  {"name": "nether_fortress", "type": "DimensionalStructure", "biomes": ["nether_wastes", "soul_sand_valley"]},
+  {"name": "bastion_remnant", "type": "DimensionalStructure", "biomes": ["nether_wastes", "crimson_forest", "warped_forest", "soul_sand_valley"]},
+  {"name": "end_city", "type": "DimensionalStructure", "biomes": ["the_end"]}
+]

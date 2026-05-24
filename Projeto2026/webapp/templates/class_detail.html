@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ class_name }}{% endblock %}
+{% block page_heading %}Classe: {{ class_name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="section-header" style="margin-bottom: 20px;">
+        <span class="pill">{{ instances|length }} Indivíduos Encontrados</span>
+        <p class="muted" style="font-family: var(--font-body); font-size: 14px;">Resultados obtidos por rdf:type.</p>
+    </div>
+
+    {% if instances %}
+    <div class="inventory-grid">
+        {% for instance in instances %}
+        <a class="inventory-slot" href="{{ url_for('ontology.resource_detail', resource_name=instance) }}">
+            <img src="{{ url_for('static', filename='icons/name_tag.png') }}" class="mc-icon" alt="Instance">
+            <span>{{ instance }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h4>Sem indivíduos disponíveis</h4>
+        <p>Não existem resultados associados a esta classe no repositório atual.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

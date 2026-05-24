@@ -1,0 +1,4 @@
+[
+  {"dimension": "nether", "required": ["obsidian", "flint_and_steel"]},
+  {"dimension": "end", "required": ["ender_eye"]}
+]

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Minecraft Ontology Explorer{% endblock %}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">⛏</div>
+                <div>
+                    <h1>Minecraft Ontology</h1>
+                    <p>Knowledge Explorer</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+    <a href="{{ url_for('main.index') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/Grass_block.png') }}" class="mc-icon" alt="Início">
+        Início
+    </a>
+    <a href="{{ url_for('ontology.list_classes') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/enchanted_book.png') }}" class="mc-icon" alt="Classes">
+        Classes
+    </a>
+    <a href="{{ url_for('competency.competency') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/compass.png') }}" class="mc-icon" alt="Queries">
+        Queries
+    </a>
+    <a href="{{ url_for('admin.add_resource') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/crafting_table.png') }}" class="mc-icon" alt="Recurso">
+        Adicionar Recurso
+    </a>
+    <a href="{{ url_for('admin.add_knowledge') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/brewing_stand.png') }}" class="mc-icon" alt="Conhecimento">
+        Adicionar Conhecimento
+    </a>
+    <a href="{{ url_for('admin.add_relation') }}" class="nav-link">
+        <img src="{{ url_for('static', filename='icons/lead.png') }}" class="mc-icon" alt="Relação">
+        Adicionar Relação
+    </a>
+
+    <a class="nav-link" href="{{ url_for('competency.sparql_livre') }}">
+    <img src="{{ url_for('static', filename='icons/command_block_minecart.png') }}" class="mc-icon" alt="SPARQL">
+    <span>SPARQL Livre</span>
+</a>
+</nav>
+
+            <div class="sidebar-footer">
+                <p>RPCW 2025/2026</p>
+                <p class="muted">GraphDB + Flask + OWL</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Exploração semântica</p>
+                    <h2>{% block page_heading %}Minecraft Ontology Explorer{% endblock %}</h2>
+                </div>
+            </header>
+
+            <section class="content-area">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

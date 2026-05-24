@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Recurso{% endblock %}
+{% block page_heading %}Adicionar Recurso{% endblock %}
+
+{% block content %}
+<div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="card table-wrapper" style="padding: 20px;">
+        <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px;">Criar novo indivíduo</h3>
+        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Esta operação cria um novo recurso na ABox.</p>
+
+        <form method="post" class="styled-form">
+            <label for="resource_name">Nome local</label>
+            <input type="text" name="resource_name" id="resource_name" placeholder="Ex.: custom_mob" required>
+
+            <label for="class_name" style="margin-top: 15px;">Classe</label>
+            <select name="class_name" id="class_name" required style="width: 100%; margin-bottom: 15px;">
+                {% for class_name in classes %}
+                <option value="{{ class_name }}">{{ class_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="display_name">Nome legível</label>
+            <input type="text" name="display_name" id="display_name" placeholder="Ex.: Custom Mob">
+
+            <label for="description" style="margin-top: 15px;">Descrição opcional</label>
+            <input type="text" name="description" id="description" placeholder="Ex.: Criado manualmente">
+
+            <button type="submit" class="button button-primary" style="margin-top: 20px; width: 100%;">Craftar recurso</button>
+        </form>
+
+        {% if message %}
+        <div class="mini-stat" style="margin-top: 20px;">
+            <span class="mini-stat-label">System Message</span>
+            <span class="mini-stat-value" style="font-size: 12px;">{{ message }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="home-feature-card">
+            <h3>Command Output</h3>
+            <div class="code-box">
+                > custom_mob rdf:type HostileMob<br>
+                > BUILD SUCCESSFUL
+            </div>
+
+            <p style="font-size: 14px; margin-bottom: 10px;">
+                Depois de criado, o recurso pode ser consultado em:
+            </p>
+            <p style="color: var(--accent); font-family: var(--font-pixel); font-size: 9px; line-height: 1.5;">
+                /ontology/resource/custom_mob
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

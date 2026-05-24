@@ -1,0 +1,550 @@
+/* =========================================
+   MINECRAFT WIKI THEME (DigMinecraft Style)
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    /* Minecraft UI Colors */
+    --mc-bg: #e6e6e6;          /* Light wiki background */
+    --mc-sidebar: #2b2b2b;     /* Dark stone sidebar */
+    --mc-panel: #c6c6c6;       /* Classic UI light grey */
+    --mc-border-light: #ffffff;
+    --mc-border-dark: #555555;
+    --mc-border-black: #000000;
+    
+    /* Text Colors */
+    --text-main: #222222;      /* Dark text for readability */
+    --text-sidebar: #dddddd;
+    --accent: #00aa00;         /* Minecraft green */
+    --link-color: #3b5998;     /* Wiki link blue */
+
+    /* Fonts */
+    --font-pixel: 'Press Start 2P', monospace;
+    --font-body: Arial, Helvetica, sans-serif; /* DigMinecraft uses standard fonts for readable text */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--mc-bg);
+    /* Optional: Add a subtle dirt/stone background pattern here */
+    color: var(--text-main);
+    min-height: 100%;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.page-shell {
+    min-height: 100vh;
+}
+
+/* =========================================
+   SIDEBAR (Lateral Menu)
+   ========================================= */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 290px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: var(--mc-sidebar); 
+    border-right: 4px solid var(--mc-border-black);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 10;
+    color: var(--text-sidebar);
+    
+    /* 3D border effect for the right edge */
+    box-shadow: inset -4px 0px 0px 0px #1a1a1a,
+                inset 4px 0px 0px 0px #4d4d4d;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.brand-icon {
+    width: 52px;
+    height: 52px;
+    background-color: var(--mc-panel);
+    border: 2px solid var(--mc-border-black);
+    box-shadow: inset 2px 2px 0px 0px var(--mc-border-light), 
+                inset -2px -2px 0px 0px var(--mc-border-dark);
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    color: #000;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-family: var(--font-pixel);
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000;
+    line-height: 1.4;
+}
+
+.brand p {
+    margin: 4px 0 0;
+    color: #aaaaaa;
+    font-size: 0.85rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-link {
+    padding: 12px 14px;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid transparent;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Creates the white inner highlight seen when hovering over an inventory slot */
+    box-shadow: inset 2px 2px 0px 0px #ffffff, inset -2px -2px 0px 0px #ffffff;
+    border: 2px solid transparent; 
+    text-decoration: none;
+}
+
+.sidebar-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 2px solid var(--mc-border-dark);
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+.main-content {
+    margin-left: 310px; /* Slightly increased to add a gap from the sidebar */
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 30px 40px 40px;
+    
+    /* Classic Minecraft GUI Panel */
+    background-color: var(--mc-panel);
+    border: 4px solid var(--mc-border-black);
+    box-shadow: inset 4px 4px 0px 0px var(--mc-border-light), 
+                inset -4px -4px 0px 0px var(--mc-border-dark);
+    min-height: calc(100vh - 40px);
+}
+
+.topbar {
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--mc-panel);
+    padding-bottom: 15px;
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    text-transform: uppercase;
+    font-family: var(--font-pixel);
+    font-size: 0.65rem;
+    color: var(--accent);
+}
+
+.topbar h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: var(--font-pixel);
+    color: #333;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+/* =========================================
+
+/* =========================================
+   MINECRAFT TOOLTIP STYLE (For Stat Boxes)
+   ========================================= */
+.mini-stat {
+    background-color: #110111; /* Very dark background, like the game's UI */
+    border: 3px solid #110111; /* Outer dark border */
+    /* The iconic dark purple inner frame */
+    box-shadow: inset 3px 3px 0px 0px #311370, 
+                inset -3px -3px 0px 0px #311370; 
+    border-radius: 0; /* Blocky edges */
+    padding: 16px;
+}
+
+.mini-stat-label {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    color: #ffaa00; /* Minecraft Gold text */
+    text-shadow: 2px 2px 0px #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.mini-stat-value {
+    display: block;
+    font-family: var(--font-pixel);
+    font-size: 18px;
+    color: #ffffff; /* White text */
+    text-shadow: 2px 2px 0px #000000;
+    font-weight: normal;
+}
+
+/* =========================================
+   MINECRAFT BUTTONS
+   ========================================= */
+.button, .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    
+    /* Minecraft Base */
+    background-color: var(--mc-panel);
+    border: 2px solid var(--mc-border-black);
+    box-shadow: inset 3px 3px 0px 0px var(--mc-border-light), 
+                inset -3px -3px 0px 0px var(--mc-border-dark);
+    
+    color: #ffffff !important;
+    font-family: var(--font-pixel);
+    text-shadow: 2px 2px 0px #3f3f3f;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.button:hover, .btn:hover {
+    background-color: #7486ce;
+    color: #ffff55 !important;
+    box-shadow: inset 3px 3px 0px 0px #97a8e8, 
+                inset -3px -3px 0px 0px #5364a0;
+    text-shadow: 2px 2px 0px #3f3f15;
+    text-decoration: none;
+}
+
+.button:active, .btn:active {
+    box-shadow: inset 3px 3px 0px 0px var(--mc-border-dark), 
+                inset -3px -3px 0px 0px var(--mc-border-light);
+    padding-top: 14px;
+    padding-bottom: 10px;
+}
+
+/* =========================================
+   CAIXAS DE DESTAQUE (Estilo Tooltip Minecraft)
+   ========================================= */
+.home-feature-card {
+    background-color: #110111 !important; /* Fundo escuro */
+    border: 3px solid #110111 !important;
+    /* Margem roxa escura clássica do Minecraft */
+    box-shadow: inset 3px 3px 0px 0px #311370, 
+                inset -3px -3px 0px 0px #311370 !important;
+    border-radius: 0 !important; /* Sem cantos arredondados */
+    padding: 22px;
+}
+
+.home-feature-card h3 {
+    font-family: var(--font-pixel);
+    font-size: 12px;
+    color: #ffaa00; /* Texto Dourado (Gold) do jogo */
+    text-shadow: 2px 2px 0px #000000;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.home-feature-card p {
+    font-family: var(--font-body); /* Usamos a fonte normal para ser fácil de ler */
+    color: #aaaaaa;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Remover o estilo moderno e verde antigo do ícone */
+.feature-icon {
+    background: transparent !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* =========================================
+   TABLES & LISTS (Inventory Style)
+   ========================================= */
+.table-wrapper {
+    background-color: var(--mc-panel);
+    border: 3px solid var(--mc-border-black);
+    box-shadow: inset 3px 3px 0px 0px var(--mc-border-light), 
+                inset -3px -3px 0px 0px var(--mc-border-dark);
+    padding: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #8b8b8b; /* Darker inside slots */
+    border: 2px solid var(--mc-border-dark);
+}
+
+th, td {
+    padding: 12px;
+    border: 2px solid var(--mc-border-dark);
+    color: #000;
+}
+
+th {
+    background-color: var(--mc-panel);
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    text-shadow: 1px 1px 0px #fff;
+}
+
+td {
+    background-color: #aaaaaa;
+    box-shadow: inset 2px 2px 0px 0px #888, inset -2px -2px 0px 0px #ccc;
+}
+
+/* =========================================
+   FORMS & INPUTS
+   ========================================= */
+input, select, textarea {
+    background-color: #000;
+    border: 2px solid #777;
+    box-shadow: inset 2px 2px 0px 0px #333;
+    color: #fff;
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 0;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #fff;
+    border-color: #fff;
+}
+
+label {
+    font-weight: bold;
+    color: #222;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 1100px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 4px solid var(--mc-border-black);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+
+.mc-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    image-rendering: pixelated; /* Crucial: Stops the image from getting blurry */
+    object-fit: contain;
+}
+
+
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================
+   BLOCKY SCROLLBARS
+   ========================================= */
+::-webkit-scrollbar {
+    width: 16px;
+    background-color: #3b3b3b; /* Dark track */
+    border-left: 2px solid var(--mc-border-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--mc-panel);
+    border: 2px solid var(--mc-border-black);
+    /* Create the 3D button effect on the scrollbar thumb */
+    box-shadow: inset 2px 2px 0px 0px var(--mc-border-light), 
+                inset -2px -2px 0px 0px var(--mc-border-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #d6d6d6;
+}
+
+/* =========================================
+   INVENTORY GRIDS (For Lists and Classes)
+   ========================================= */
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.inventory-slot {
+    background-color: #8b8b8b; /* Dark inside of a slot */
+    border: 2px solid var(--mc-border-dark);
+    /* The classic slot inner shadow (dark top/left, light bottom/right) */
+    box-shadow: inset 3px 3px 0px 0px #373737, 
+                inset -3px -3px 0px 0px #ffffff;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    text-transform: lowercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.inventory-slot:hover {
+    background-color: #9d9d9d; /* Highlight slot on hover */
+    color: #ffff55; /* Minecraft Yellow Text */
+    /* Invert shadow to look like it's being pressed/selected */
+    box-shadow: inset 3px 3px 0px 0px #ffffff, 
+                inset -3px -3px 0px 0px #373737;
+}
+
+/* =========================================
+   COMMAND BLOCK / TERMINAL CODE
+   ========================================= */
+.code-box {
+    background-color: #000000;
+    border: 4px solid #333333;
+    box-shadow: inset 4px 4px 0px 0px #111111;
+    padding: 16px;
+    color: #55ff55; /* Minecraft Command Green */
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   BADGES & EMPTY STATES
+   ========================================= */
+.pill, .badge {
+    background-color: #311370;
+    color: #ffaa00; /* Gold */
+    border: 2px solid #110111;
+    padding: 8px 12px;
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 10px;
+    box-shadow: inset 2px 2px 0px 0px #4a1f9e;
+}
+
+.empty-state {
+    background-color: #3b1111; /* Nether/Error Vibe */
+    border: 3px solid #1a0505;
+    padding: 20px;
+    color: #ff5555; /* Minecraft Light Red */
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.8;
+    box-shadow: inset 3px 3px 0px 0px #5e1c1c, 
+                inset -3px -3px 0px 0px #1a0505;
+    margin-top: 20px;
+}
+
+/* =========================================
+   IN-GAME GUI (CRAFTING )
+   ========================================= */
+.gui-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c6c6c6; 
+    border: 4px solid #000000;
+    box-shadow: inset 4px 4px 0px 0px #ffffff, 
+                inset -4px -4px 0px 0px #555555;
+    padding: 20px 30px;
+    gap: 30px;
+}
+
+.gui-grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 36px);
+    grid-template-rows: repeat(3, 36px);
+    gap: 2px;
+}
+
+.gui-slot {
+    width: 36px;
+    height: 36px;
+    background-color: #8b8b8b;
+    box-shadow: inset 2px 2px 0px 0px #373737, 
+                inset -2px -2px 0px 0px #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.gui-slot:hover {
+    background-color: #9d9d9d;
+}
+
+.gui-slot img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.gui-slot.large {
+    width: 54px;
+    height: 54px;
+}
+
+.gui-slot.large img {
+    width: 48px;
+    height: 48px;
+}

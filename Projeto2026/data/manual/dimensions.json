@@ -1,0 +1,5 @@
+[
+  {"name": "overworld", "displayName": "Overworld"},
+  {"name": "nether", "displayName": "Nether"},
+  {"name": "end", "displayName": "The End"}
+]

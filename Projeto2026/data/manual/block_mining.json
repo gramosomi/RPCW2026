@@ -1,0 +1,13 @@
+[
+  {"block": "stone", "requiresMinTier": "Wood"},
+  {"block": "coal_ore", "requiresMinTier": "Wood"},
+  {"block": "copper_ore", "requiresMinTier": "Stone"},
+  {"block": "iron_ore", "requiresMinTier": "Stone"},
+  {"block": "gold_ore", "requiresMinTier": "Iron"},
+  {"block": "redstone_ore", "requiresMinTier": "Iron"},
+  {"block": "lapis_ore", "requiresMinTier": "Stone"},
+  {"block": "diamond_ore", "requiresMinTier": "Iron"},
+  {"block": "emerald_ore", "requiresMinTier": "Iron"},
+  {"block": "obsidian", "requiresMinTier": "Diamond"},
+  {"block": "ancient_debris", "requiresMinTier": "Diamond"}
+]

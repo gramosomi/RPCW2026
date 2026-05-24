@@ -1,0 +1,12 @@
+[
+  {"name": "Wood", "order": 1},
+  {"name": "Stone", "order": 2},
+  {"name": "Copper", "order": 3},
+  {"name": "Iron", "order": 4},
+  {"name": "Gold", "order": 5},
+  {"name": "Diamond", "order": 6},
+  {"name": "Netherite", "order": 7},
+  {"name": "Leather", "order": 1},
+  {"name": "Chainmail", "order": 2},
+  {"name": "Turtle", "order": 3}
+]

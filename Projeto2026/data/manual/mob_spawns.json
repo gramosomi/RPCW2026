@@ -1,0 +1,10 @@
+[
+  {"mob": "zombie", "biomes": ["plains", "forest", "desert", "taiga"]},
+  {"mob": "skeleton", "biomes": ["plains", "forest", "desert", "taiga"]},
+  {"mob": "creeper", "biomes": ["plains", "forest", "desert", "taiga"]},
+  {"mob": "cow", "biomes": ["plains", "forest"]},
+  {"mob": "chicken", "biomes": ["plains", "forest"]},
+  {"mob": "sheep", "biomes": ["plains", "forest", "taiga"]},
+  {"mob": "enderman", "biomes": ["warped_forest", "the_end"]},
+  {"mob": "blaze", "biomes": ["nether_wastes", "soul_sand_valley"]}
+]

@@ -1,0 +1,745 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:aqua_affinity a :Enchantment,
+        :Head_armorEnchantment ;
+    :enchantmentID 0 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Aqua Affinity"^^xsd:string ;
+    :hasName "aqua_affinity"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:binding_curse a :Enchantment,
+        :EquippableEnchantment ;
+    :enchantmentID 2 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Curse of Binding"^^xsd:string ;
+    :hasName "binding_curse"^^xsd:string ;
+    :isCurse true ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly true ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:efficiency a :Enchantment,
+        :MiningEnchantment ;
+    :enchantmentID 8 ;
+    :enchantmentWeight 10 ;
+    :hasDisplayName "Efficiency"^^xsd:string ;
+    :hasName "efficiency"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:feather_falling a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 9 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Feather Falling"^^xsd:string ;
+    :hasName "feather_falling"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:fire_aspect a :Enchantment,
+        :Fire_aspectEnchantment ;
+    :enchantmentID 10 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Fire Aspect"^^xsd:string ;
+    :hasName "fire_aspect"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 1 ;
+    :maxCostB 1 ;
+    :maxLevel 2 ;
+    :minCostA 1 ;
+    :minCostB 1 .
+
+:flame a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 12 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Flame"^^xsd:string ;
+    :hasName "flame"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:knockback a :Enchantment,
+        :Melee_weaponEnchantment ;
+    :enchantmentID 17 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Knockback"^^xsd:string ;
+    :hasName "knockback"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 1 ;
+    :maxCostB 1 ;
+    :maxLevel 2 ;
+    :minCostA 1 ;
+    :minCostB 1 .
+
+:looting a :Enchantment,
+        :Melee_weaponEnchantment ;
+    :enchantmentID 18 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Looting"^^xsd:string ;
+    :hasName "looting"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:luck_of_the_sea a :Enchantment,
+        :FishingEnchantment ;
+    :enchantmentID 20 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Luck of the Sea"^^xsd:string ;
+    :hasName "luck_of_the_sea"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:lunge a :Enchantment,
+        :LungeEnchantment ;
+    :enchantmentID 21 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Lunge"^^xsd:string ;
+    :hasName "lunge"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:lure a :Enchantment,
+        :FishingEnchantment ;
+    :enchantmentID 22 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Lure"^^xsd:string ;
+    :hasName "lure"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:power a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 26 ;
+    :enchantmentWeight 10 ;
+    :hasDisplayName "Power"^^xsd:string ;
+    :hasName "power"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:punch a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 29 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Punch"^^xsd:string ;
+    :hasName "punch"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 1 ;
+    :maxCostB 1 ;
+    :maxLevel 2 ;
+    :minCostA 1 ;
+    :minCostB 1 .
+
+:quick_charge a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 30 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Quick Charge"^^xsd:string ;
+    :hasName "quick_charge"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:respiration a :Enchantment,
+        :Head_armorEnchantment ;
+    :enchantmentID 31 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Respiration"^^xsd:string ;
+    :hasName "respiration"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:soul_speed a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 36 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Soul Speed"^^xsd:string ;
+    :hasName "soul_speed"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable false ;
+    :isTradeable false ;
+    :isTreasureOnly true ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:sweeping_edge a :Enchantment,
+        :SweepingEnchantment ;
+    :enchantmentID 37 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Sweeping Edge"^^xsd:string ;
+    :hasName "sweeping_edge"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:swift_sneak a :Enchantment,
+        :Leg_armorEnchantment ;
+    :enchantmentID 38 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Swift Sneak"^^xsd:string ;
+    :hasName "swift_sneak"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable false ;
+    :isTradeable false ;
+    :isTreasureOnly true ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:thorns a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 39 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Thorns"^^xsd:string ;
+    :hasName "thorns"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:unbreaking a :DurabilityEnchantment,
+        :Enchantment ;
+    :enchantmentID 40 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Unbreaking"^^xsd:string ;
+    :hasName "unbreaking"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:vanishing_curse a :Enchantment,
+        :VanishingEnchantment ;
+    :enchantmentID 41 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Curse of Vanishing"^^xsd:string ;
+    :hasName "vanishing_curse"^^xsd:string ;
+    :isCurse true ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly true ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:wind_burst a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 42 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Wind Burst"^^xsd:string ;
+    :hasName "wind_burst"^^xsd:string ;
+    :isCurse false ;
+    :isDiscoverable false ;
+    :isTradeable false ;
+    :isTreasureOnly true ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:channeling a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 5 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Channeling"^^xsd:string ;
+    :hasName "channeling"^^xsd:string ;
+    :incompatibleWith :riptide ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:depth_strider a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 7 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Depth Strider"^^xsd:string ;
+    :hasName "depth_strider"^^xsd:string ;
+    :incompatibleWith :frost_walker ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:fortune a :Enchantment,
+        :Mining_lootEnchantment ;
+    :enchantmentID 13 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Fortune"^^xsd:string ;
+    :hasName "fortune"^^xsd:string ;
+    :incompatibleWith :silk_touch ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:frost_walker a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 14 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Frost Walker"^^xsd:string ;
+    :hasName "frost_walker"^^xsd:string ;
+    :incompatibleWith :depth_strider ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly true ;
+    :maxCostA 1 ;
+    :maxCostB 1 ;
+    :maxLevel 2 ;
+    :minCostA 1 ;
+    :minCostB 1 .
+
+:infinity a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 16 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Infinity"^^xsd:string ;
+    :hasName "infinity"^^xsd:string ;
+    :incompatibleWith :mending ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:loyalty a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 19 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Loyalty"^^xsd:string ;
+    :hasName "loyalty"^^xsd:string ;
+    :incompatibleWith :riptide ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:mending a :DurabilityEnchantment,
+        :Enchantment ;
+    :enchantmentID 23 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Mending"^^xsd:string ;
+    :hasName "mending"^^xsd:string ;
+    :incompatibleWith :infinity ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly true ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:multishot a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 24 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Multishot"^^xsd:string ;
+    :hasName "multishot"^^xsd:string ;
+    :incompatibleWith :piercing ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:piercing a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 25 ;
+    :enchantmentWeight 10 ;
+    :hasDisplayName "Piercing"^^xsd:string ;
+    :hasName "piercing"^^xsd:string ;
+    :incompatibleWith :multishot ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:silk_touch a :Enchantment,
+        :Mining_lootEnchantment ;
+    :enchantmentID 34 ;
+    :enchantmentWeight 1 ;
+    :hasDisplayName "Silk Touch"^^xsd:string ;
+    :hasName "silk_touch"^^xsd:string ;
+    :incompatibleWith :fortune ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 0 ;
+    :maxCostB 1 ;
+    :maxLevel 1 ;
+    :minCostA 0 ;
+    :minCostB 1 .
+
+:riptide a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 32 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Riptide"^^xsd:string ;
+    :hasName "riptide"^^xsd:string ;
+    :incompatibleWith :channeling,
+        :loyalty ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 2 ;
+    :maxCostB 1 ;
+    :maxLevel 3 ;
+    :minCostA 2 ;
+    :minCostB 1 .
+
+:blast_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 3 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Blast Protection"^^xsd:string ;
+    :hasName "blast_protection"^^xsd:string ;
+    :incompatibleWith :fire_protection,
+        :projectile_protection,
+        :protection ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:fire_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 11 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Fire Protection"^^xsd:string ;
+    :hasName "fire_protection"^^xsd:string ;
+    :incompatibleWith :blast_protection,
+        :projectile_protection,
+        :protection ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:projectile_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 27 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Projectile Protection"^^xsd:string ;
+    :hasName "projectile_protection"^^xsd:string ;
+    :incompatibleWith :blast_protection,
+        :fire_protection,
+        :protection ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 28 ;
+    :enchantmentWeight 10 ;
+    :hasDisplayName "Protection"^^xsd:string ;
+    :hasName "protection"^^xsd:string ;
+    :incompatibleWith :blast_protection,
+        :fire_protection,
+        :projectile_protection ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:bane_of_arthropods a :Enchantment,
+        :WeaponEnchantment ;
+    :enchantmentID 1 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Bane of Arthropods"^^xsd:string ;
+    :hasName "bane_of_arthropods"^^xsd:string ;
+    :incompatibleWith :breach,
+        :density,
+        :impaling,
+        :sharpness,
+        :smite ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:breach a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 4 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Breach"^^xsd:string ;
+    :hasName "breach"^^xsd:string ;
+    :incompatibleWith :bane_of_arthropods,
+        :density,
+        :impaling,
+        :sharpness,
+        :smite ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 3 ;
+    :maxCostB 1 ;
+    :maxLevel 4 ;
+    :minCostA 3 ;
+    :minCostB 1 .
+
+:density a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 6 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Density"^^xsd:string ;
+    :hasName "density"^^xsd:string ;
+    :incompatibleWith :bane_of_arthropods,
+        :breach,
+        :impaling,
+        :sharpness,
+        :smite ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:impaling a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 15 ;
+    :enchantmentWeight 2 ;
+    :hasDisplayName "Impaling"^^xsd:string ;
+    :hasName "impaling"^^xsd:string ;
+    :incompatibleWith :bane_of_arthropods,
+        :breach,
+        :density,
+        :sharpness,
+        :smite ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:sharpness a :Enchantment,
+        :Sharp_weaponEnchantment ;
+    :enchantmentID 33 ;
+    :enchantmentWeight 10 ;
+    :hasDisplayName "Sharpness"^^xsd:string ;
+    :hasName "sharpness"^^xsd:string ;
+    :incompatibleWith :bane_of_arthropods,
+        :breach,
+        :density,
+        :impaling,
+        :smite ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+
+:smite a :Enchantment,
+        :WeaponEnchantment ;
+    :enchantmentID 35 ;
+    :enchantmentWeight 5 ;
+    :hasDisplayName "Smite"^^xsd:string ;
+    :hasName "smite"^^xsd:string ;
+    :incompatibleWith :bane_of_arthropods,
+        :breach,
+        :density,
+        :impaling,
+        :sharpness ;
+    :isCurse false ;
+    :isDiscoverable true ;
+    :isTradeable true ;
+    :isTreasureOnly false ;
+    :maxCostA 4 ;
+    :maxCostB 1 ;
+    :maxLevel 5 ;
+    :minCostA 4 ;
+    :minCostB 1 .
+

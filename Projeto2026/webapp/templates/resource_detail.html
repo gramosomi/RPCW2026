@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}{{ resource_name }}{% endblock %}
+{% block page_heading %}Recurso: {{ resource_name }}{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 20px;">
+    <div class="home-feature-card">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="{{ url_for('static', filename='icons/' ~ resource_name ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'" class="mc-icon"
+                    style="width: 48px; height: 48px;" alt="Icon">
+                <div>
+                    <span class="badge">Item / Recurso</span>
+                    <h3 style="margin-top: 5px; font-size: 18px; color: #ffffff;">{{ resource_name|replace('_', '
+                        ')|title }}</h3>
+                </div>
+            </div>
+            <div style="text-align: right;">
+                <span class="pill" style="display: block; margin-bottom: 5px;">{{ total_direct }} Propriedades</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if 'recipe' in resource_name.lower() and 'slot' not in resource_name.lower() %}
+<div class="card" style="margin-bottom: 20px; text-align: center;">
+    <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 20px; color: #333; text-align: left;">
+        Interface de Crafting</h3>
+
+    <div class="gui-container">
+    
+        <div class="gui-grid-3x3">
+            {% for r in range(0, 3) %}
+            {% for c in range(0, 3) %}
+            <div class="gui-slot">
+                {% set item = grid_map.get((r, c)) %}
+                {% if item %}
+                <a href="{{ url_for('ontology.resource_detail', resource_name=item) }}">
+                    <img src="{{ url_for('static', filename='icons/' ~ item ~ '.png') }}"
+                        onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'">
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div>
+            <img src="{{ url_for('static', filename='icons/arrow.png') }}" style="width: 48px;">
+        </div>
+
+        <div class="gui-slot large">
+            {% if output_item %}
+            <a href="{{ url_for('ontology.resource_detail', resource_name=output_item) }}">
+                <img src="{{ url_for('static', filename='icons/' ~ output_item ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'"
+                    title="{{ output_item|replace('_', ' ')|title }}">
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px; color: #333;">Estatísticas e
+        Ligações</h3>
+    <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Informações do recurso (ID, Stack, Encantamentos,
+        etc).</p>
+
+    {% if grouped_direct %}
+    <div class="table-wrapper">
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="color: #ffffff; width: 30%;">Propriedade</th>
+                    <th style="color: #ffffff; width: 70%;">Valor(es)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for predicate, rows in grouped_direct %}
+                <tr>
+                    <td
+                        style="color: #1a1a1a; font-size: 12px; vertical-align: middle; padding-top: 14px; padding-bottom: 14px;">
+                        {{ predicate.split('#')[-1] if '#' in predicate else predicate.split('/')[-1] }}
+                    </td>
+
+                    <td style="padding-top: 14px; padding-bottom: 14px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                            {% for row in rows %}
+                            {% set o_val = row.o.value %}
+
+                            {% if row.o.type == 'uri' %}
+                            {% set local_o = o_val.split('#')[-1] if '#' in o_val else o_val.split('/')[-1] %}
+                            <a href="{{ url_for('ontology.resource_detail', resource_name=local_o) }}"
+                                style="background-color: #2b2b2b; border: 2px solid #000; color: #fff; padding: 8px 12px; font-family: var(--font-pixel); font-size: 9px; text-decoration: none; display: inline-block; box-shadow: inset 2px 2px 0px 0px #555, inset -2px -2px 0px 0px #111;">
+                                {{ local_o|replace('_', ' ') }}
+                            </a>
+                            {% else %}
+                            <span
+                                style="color: #ffffff; font-family: var(--font-body); font-weight: bold; font-size: 15px; background: #1a1a1a; padding: 6px 12px; border: 2px solid #444;">
+                                {{ o_val }}
+                            </span>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h4>Sem dados</h4>
+        <p>Este recurso não possui propriedades ou estatísticas na ontologia.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

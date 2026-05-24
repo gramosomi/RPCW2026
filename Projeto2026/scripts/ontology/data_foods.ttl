@@ -1,0 +1,456 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:apple a :Food ;
+    :effectiveQuality "23.2"^^xsd:float ;
+    :foodPoints "4.0"^^xsd:float ;
+    :hasDisplayName "Apple"^^xsd:string ;
+    :hasName "apple"^^xsd:string ;
+    :itemID 893 ;
+    :saturation "19.2"^^xsd:float ;
+    :saturationRatio "4.8"^^xsd:float ;
+    :stackSize 64 .
+
+:baked_potato a :Food ;
+    :effectiveQuality "65.0"^^xsd:float ;
+    :foodPoints "5.0"^^xsd:float ;
+    :hasDisplayName "Baked Potato"^^xsd:string ;
+    :hasName "baked_potato"^^xsd:string ;
+    :itemID 1229 ;
+    :saturation "60.0"^^xsd:float ;
+    :saturationRatio "12.0"^^xsd:float ;
+    :stackSize 64 .
+
+:beef a :Food,
+        :RawFood ;
+    :effectiveQuality "13.8"^^xsd:float ;
+    :foodPoints "3.0"^^xsd:float ;
+    :hasDisplayName "Raw Beef"^^xsd:string ;
+    :hasName "beef"^^xsd:string ;
+    :itemID 1110 ;
+    :saturation "10.8"^^xsd:float ;
+    :saturationRatio "3.6000001"^^xsd:float ;
+    :stackSize 64 .
+
+:beetroot a :Food ;
+    :effectiveQuality "3.4"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Beetroot"^^xsd:string ;
+    :hasName "beetroot"^^xsd:string ;
+    :itemID 1287 ;
+    :saturation "2.4"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 64 .
+
+:beetroot_soup a :Food ;
+    :effectiveQuality "92.4"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Beetroot Soup"^^xsd:string ;
+    :hasName "beetroot_soup"^^xsd:string ;
+    :itemID 1289 ;
+    :saturation "86.4"^^xsd:float ;
+    :saturationRatio "14.400001"^^xsd:float ;
+    :stackSize 1 .
+
+:bread a :Food ;
+    :effectiveQuality "65.0"^^xsd:float ;
+    :foodPoints "5.0"^^xsd:float ;
+    :hasDisplayName "Bread"^^xsd:string ;
+    :hasName "bread"^^xsd:string ;
+    :itemID 953 ;
+    :saturation "60.0"^^xsd:float ;
+    :saturationRatio "12.0"^^xsd:float ;
+    :stackSize 64 .
+
+:carrot a :Food ;
+    :effectiveQuality "24.6"^^xsd:float ;
+    :foodPoints "3.0"^^xsd:float ;
+    :hasDisplayName "Carrot"^^xsd:string ;
+    :hasName "carrot"^^xsd:string ;
+    :itemID 1227 ;
+    :saturation "21.6"^^xsd:float ;
+    :saturationRatio "7.2000003"^^xsd:float ;
+    :stackSize 64 .
+
+:chicken a :Food,
+        :RawFood ;
+    :effectiveQuality "6.8"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Raw Chicken"^^xsd:string ;
+    :hasName "chicken"^^xsd:string ;
+    :itemID 1112 ;
+    :saturation "4.8"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 64 .
+
+:chorus_fruit a :Food ;
+    :effectiveQuality "23.2"^^xsd:float ;
+    :foodPoints "4.0"^^xsd:float ;
+    :hasDisplayName "Chorus Fruit"^^xsd:string ;
+    :hasName "chorus_fruit"^^xsd:string ;
+    :itemID 1283 ;
+    :saturation "19.2"^^xsd:float ;
+    :saturationRatio "4.8"^^xsd:float ;
+    :stackSize 64 .
+
+:cod a :Food,
+        :RawFood ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Raw Cod"^^xsd:string ;
+    :hasName "cod"^^xsd:string ;
+    :itemID 1057 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 64 .
+
+:cod_bucket a :Food ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Bucket of Cod"^^xsd:string ;
+    :hasName "cod_bucket"^^xsd:string ;
+    :itemID 1021 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 1 .
+
+:cooked_beef a :Food ;
+    :effectiveQuality "212.8"^^xsd:float ;
+    :foodPoints "8.0"^^xsd:float ;
+    :hasDisplayName "Steak"^^xsd:string ;
+    :hasName "cooked_beef"^^xsd:string ;
+    :itemID 1111 ;
+    :saturation "204.8"^^xsd:float ;
+    :saturationRatio "25.6"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_chicken a :CookedFood,
+        :Food ;
+    :effectiveQuality "92.4"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Cooked Chicken"^^xsd:string ;
+    :hasName "cooked_chicken"^^xsd:string ;
+    :itemID 1113 ;
+    :saturation "86.4"^^xsd:float ;
+    :saturationRatio "14.400001"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_cod a :CookedFood,
+        :Food ;
+    :effectiveQuality "65.0"^^xsd:float ;
+    :foodPoints "5.0"^^xsd:float ;
+    :hasDisplayName "Cooked Cod"^^xsd:string ;
+    :hasName "cooked_cod"^^xsd:string ;
+    :itemID 1061 ;
+    :saturation "60.0"^^xsd:float ;
+    :saturationRatio "12.0"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_mutton a :CookedFood,
+        :Food ;
+    :effectiveQuality "121.200005"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Cooked Mutton"^^xsd:string ;
+    :hasName "cooked_mutton"^^xsd:string ;
+    :itemID 1265 ;
+    :saturation "115.200005"^^xsd:float ;
+    :saturationRatio "19.2"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_porkchop a :CookedFood,
+        :Food ;
+    :effectiveQuality "212.8"^^xsd:float ;
+    :foodPoints "8.0"^^xsd:float ;
+    :hasDisplayName "Cooked Porkchop"^^xsd:string ;
+    :hasName "cooked_porkchop"^^xsd:string ;
+    :itemID 984 ;
+    :saturation "204.8"^^xsd:float ;
+    :saturationRatio "25.6"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_rabbit a :CookedFood,
+        :Food ;
+    :effectiveQuality "65.0"^^xsd:float ;
+    :foodPoints "5.0"^^xsd:float ;
+    :hasDisplayName "Cooked Rabbit"^^xsd:string ;
+    :hasName "cooked_rabbit"^^xsd:string ;
+    :itemID 1250 ;
+    :saturation "60.0"^^xsd:float ;
+    :saturationRatio "12.0"^^xsd:float ;
+    :stackSize 64 .
+
+:cooked_salmon a :CookedFood,
+        :Food ;
+    :effectiveQuality "121.200005"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Cooked Salmon"^^xsd:string ;
+    :hasName "cooked_salmon"^^xsd:string ;
+    :itemID 1062 ;
+    :saturation "115.200005"^^xsd:float ;
+    :saturationRatio "19.2"^^xsd:float ;
+    :stackSize 64 .
+
+:cookie a :Food ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Cookie"^^xsd:string ;
+    :hasName "cookie"^^xsd:string ;
+    :itemID 1102 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 64 .
+
+:dried_kelp a :Food ;
+    :effectiveQuality "2.2"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Dried Kelp"^^xsd:string ;
+    :hasName "dried_kelp"^^xsd:string ;
+    :itemID 1107 ;
+    :saturation "1.2"^^xsd:float ;
+    :saturationRatio "1.2"^^xsd:float ;
+    :stackSize 64 .
+
+:enchanted_golden_apple a :Food ;
+    :effectiveQuality "80.8"^^xsd:float ;
+    :foodPoints "4.0"^^xsd:float ;
+    :hasDisplayName "Enchanted Golden Apple"^^xsd:string ;
+    :hasName "enchanted_golden_apple"^^xsd:string ;
+    :itemID 987 ;
+    :saturation "76.8"^^xsd:float ;
+    :saturationRatio "19.2"^^xsd:float ;
+    :stackSize 64 .
+
+:glow_berries a :Food ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Glow Berries"^^xsd:string ;
+    :hasName "glow_berries"^^xsd:string ;
+    :itemID 1374 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 64 .
+
+:golden_apple a :Food ;
+    :effectiveQuality "80.8"^^xsd:float ;
+    :foodPoints "4.0"^^xsd:float ;
+    :hasDisplayName "Golden Apple"^^xsd:string ;
+    :hasName "golden_apple"^^xsd:string ;
+    :itemID 986 ;
+    :saturation "76.8"^^xsd:float ;
+    :saturationRatio "19.2"^^xsd:float ;
+    :stackSize 64 .
+
+:golden_carrot a :Food ;
+    :effectiveQuality "178.8"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Golden Carrot"^^xsd:string ;
+    :hasName "golden_carrot"^^xsd:string ;
+    :itemID 1232 ;
+    :saturation "172.8"^^xsd:float ;
+    :saturationRatio "28.800001"^^xsd:float ;
+    :stackSize 64 .
+
+:honey_bottle a :Food ;
+    :effectiveQuality "20.400002"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Honey Bottle"^^xsd:string ;
+    :hasName "honey_bottle"^^xsd:string ;
+    :itemID 1381 ;
+    :saturation "14.400001"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 16 .
+
+:melon_slice a :Food ;
+    :effectiveQuality "6.8"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Melon Slice"^^xsd:string ;
+    :hasName "melon_slice"^^xsd:string ;
+    :itemID 1106 ;
+    :saturation "4.8"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 64 .
+
+:mushroom_stew a :Food ;
+    :effectiveQuality "92.4"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Mushroom Stew"^^xsd:string ;
+    :hasName "mushroom_stew"^^xsd:string ;
+    :itemID 947 ;
+    :saturation "86.4"^^xsd:float ;
+    :saturationRatio "14.400001"^^xsd:float ;
+    :stackSize 1 .
+
+:mutton a :Food,
+        :RawFood ;
+    :effectiveQuality "6.8"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Raw Mutton"^^xsd:string ;
+    :hasName "mutton"^^xsd:string ;
+    :itemID 1264 ;
+    :saturation "4.8"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 64 .
+
+:poisonous_potato a :Food ;
+    :effectiveQuality "6.8"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Poisonous Potato"^^xsd:string ;
+    :hasName "poisonous_potato"^^xsd:string ;
+    :itemID 1230 ;
+    :saturation "4.8"^^xsd:float ;
+    :saturationRatio "2.4"^^xsd:float ;
+    :stackSize 64 .
+
+:porkchop a :Food,
+        :RawFood ;
+    :effectiveQuality "13.8"^^xsd:float ;
+    :foodPoints "3.0"^^xsd:float ;
+    :hasDisplayName "Raw Porkchop"^^xsd:string ;
+    :hasName "porkchop"^^xsd:string ;
+    :itemID 983 ;
+    :saturation "10.8"^^xsd:float ;
+    :saturationRatio "3.6000001"^^xsd:float ;
+    :stackSize 64 .
+
+:potato a :Food ;
+    :effectiveQuality "2.2"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Potato"^^xsd:string ;
+    :hasName "potato"^^xsd:string ;
+    :itemID 1228 ;
+    :saturation "1.2"^^xsd:float ;
+    :saturationRatio "1.2"^^xsd:float ;
+    :stackSize 64 .
+
+:pufferfish a :Food ;
+    :effectiveQuality "1.4"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Pufferfish"^^xsd:string ;
+    :hasName "pufferfish"^^xsd:string ;
+    :itemID 1060 ;
+    :saturation "0.4"^^xsd:float ;
+    :saturationRatio "0.4"^^xsd:float ;
+    :stackSize 64 .
+
+:pufferfish_bucket a :Food ;
+    :effectiveQuality "1.4"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Bucket of Pufferfish"^^xsd:string ;
+    :hasName "pufferfish_bucket"^^xsd:string ;
+    :itemID 1019 ;
+    :saturation "0.4"^^xsd:float ;
+    :saturationRatio "0.4"^^xsd:float ;
+    :stackSize 1 .
+
+:pumpkin_pie a :Food ;
+    :effectiveQuality "84.8"^^xsd:float ;
+    :foodPoints "8.0"^^xsd:float ;
+    :hasDisplayName "Pumpkin Pie"^^xsd:string ;
+    :hasName "pumpkin_pie"^^xsd:string ;
+    :itemID 1241 ;
+    :saturation "76.8"^^xsd:float ;
+    :saturationRatio "9.6"^^xsd:float ;
+    :stackSize 64 .
+
+:rabbit a :Food,
+        :RawFood ;
+    :effectiveQuality "13.8"^^xsd:float ;
+    :foodPoints "3.0"^^xsd:float ;
+    :hasDisplayName "Raw Rabbit"^^xsd:string ;
+    :hasName "rabbit"^^xsd:string ;
+    :itemID 1249 ;
+    :saturation "10.8"^^xsd:float ;
+    :saturationRatio "3.6000001"^^xsd:float ;
+    :stackSize 64 .
+
+:rabbit_stew a :Food ;
+    :effectiveQuality "250.0"^^xsd:float ;
+    :foodPoints "10.0"^^xsd:float ;
+    :hasDisplayName "Rabbit Stew"^^xsd:string ;
+    :hasName "rabbit_stew"^^xsd:string ;
+    :itemID 1251 ;
+    :saturation "240.0"^^xsd:float ;
+    :saturationRatio "24.0"^^xsd:float ;
+    :stackSize 1 .
+
+:rotten_flesh a :Food ;
+    :effectiveQuality "10.4"^^xsd:float ;
+    :foodPoints "4.0"^^xsd:float ;
+    :hasDisplayName "Rotten Flesh"^^xsd:string ;
+    :hasName "rotten_flesh"^^xsd:string ;
+    :itemID 1114 ;
+    :saturation "6.4"^^xsd:float ;
+    :saturationRatio "1.6"^^xsd:float ;
+    :stackSize 64 .
+
+:salmon a :Food,
+        :RawFood ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Raw Salmon"^^xsd:string ;
+    :hasName "salmon"^^xsd:string ;
+    :itemID 1058 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 64 .
+
+:salmon_bucket a :Food ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Bucket of Salmon"^^xsd:string ;
+    :hasName "salmon_bucket"^^xsd:string ;
+    :itemID 1020 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 1 .
+
+:spider_eye a :Food ;
+    :effectiveQuality "14.8"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Spider Eye"^^xsd:string ;
+    :hasName "spider_eye"^^xsd:string ;
+    :itemID 1122 ;
+    :saturation "12.8"^^xsd:float ;
+    :saturationRatio "6.4"^^xsd:float ;
+    :stackSize 64 .
+
+:suspicious_stew a :Food ;
+    :effectiveQuality "92.4"^^xsd:float ;
+    :foodPoints "6.0"^^xsd:float ;
+    :hasDisplayName "Suspicious Stew"^^xsd:string ;
+    :hasName "suspicious_stew"^^xsd:string ;
+    :itemID 1340 ;
+    :saturation "86.4"^^xsd:float ;
+    :saturationRatio "14.400001"^^xsd:float ;
+    :stackSize 1 .
+
+:sweet_berries a :Food ;
+    :effectiveQuality "3.6"^^xsd:float ;
+    :foodPoints "2.0"^^xsd:float ;
+    :hasDisplayName "Sweet Berries"^^xsd:string ;
+    :hasName "sweet_berries"^^xsd:string ;
+    :itemID 1373 ;
+    :saturation "1.6"^^xsd:float ;
+    :saturationRatio "0.8"^^xsd:float ;
+    :stackSize 64 .
+
+:tropical_fish a :Food ;
+    :effectiveQuality "1.4"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Tropical Fish"^^xsd:string ;
+    :hasName "tropical_fish"^^xsd:string ;
+    :itemID 1059 ;
+    :saturation "0.4"^^xsd:float ;
+    :saturationRatio "0.4"^^xsd:float ;
+    :stackSize 64 .
+
+:tropical_fish_bucket a :Food ;
+    :effectiveQuality "1.4"^^xsd:float ;
+    :foodPoints "1.0"^^xsd:float ;
+    :hasDisplayName "Bucket of Tropical Fish"^^xsd:string ;
+    :hasName "tropical_fish_bucket"^^xsd:string ;
+    :itemID 1022 ;
+    :saturation "0.4"^^xsd:float ;
+    :saturationRatio "0.4"^^xsd:float ;
+    :stackSize 1 .
+

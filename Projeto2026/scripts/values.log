@@ -1,0 +1,242 @@
+
+--- entities.json :: type ---
+    46  other
+    34  animal
+    34  hostile
+    19  projectile
+    15  mob
+     5  passive
+     2  living
+     1  ambient
+     1  player
+
+--- entities.json :: category ---
+    44  Passive mobs
+    43  Hostile mobs
+    27  Vehicles
+    21  Projectiles
+    16  UNKNOWN
+     6  Immobile
+
+--- entities.json :: type × category ---
+  type='ambient':
+        1  category='UNKNOWN'
+  type='animal':
+       32  category='Passive mobs'
+        2  category='Hostile mobs'
+  type='hostile':
+       34  category='Hostile mobs'
+  type='living':
+        2  category='Immobile'
+  type='mob':
+        9  category='Passive mobs'
+        6  category='Hostile mobs'
+  type='other':
+       27  category='Vehicles'
+       12  category='UNKNOWN'
+        4  category='Immobile'
+        2  category='Projectiles'
+        1  category='Hostile mobs'
+  type='passive':
+        3  category='Passive mobs'
+        2  category='UNKNOWN'
+  type='player':
+        1  category='UNKNOWN'
+  type='projectile':
+       19  category='Projectiles'
+
+--- Entities que parecem mobs (type != 'other') ---
+Total: 111
+  allay                           type=mob           category=Passive mobs
+  armadillo                       type=animal        category=Passive mobs
+  armor_stand                     type=living        category=Immobile
+  arrow                           type=projectile    category=Projectiles
+  axolotl                         type=animal        category=Passive mobs
+  bat                             type=ambient       category=UNKNOWN
+  bee                             type=animal        category=Passive mobs
+  blaze                           type=hostile       category=Hostile mobs
+  bogged                          type=hostile       category=Hostile mobs
+  breeze                          type=hostile       category=Hostile mobs
+  breeze_wind_charge              type=projectile    category=Projectiles
+  camel                           type=animal        category=Passive mobs
+  camel_husk                      type=animal        category=Passive mobs
+  cat                             type=animal        category=Passive mobs
+  cave_spider                     type=hostile       category=Hostile mobs
+  chicken                         type=animal        category=Passive mobs
+  cod                             type=mob           category=Passive mobs
+  copper_golem                    type=mob           category=Passive mobs
+  cow                             type=animal        category=Passive mobs
+  creaking                        type=hostile       category=Hostile mobs
+  creeper                         type=hostile       category=Hostile mobs
+  dolphin                         type=passive       category=Passive mobs
+  donkey                          type=animal        category=Passive mobs
+  dragon_fireball                 type=projectile    category=Projectiles
+  drowned                         type=hostile       category=Hostile mobs
+  egg                             type=projectile    category=Projectiles
+  elder_guardian                  type=hostile       category=Hostile mobs
+  enderman                        type=hostile       category=Hostile mobs
+  endermite                       type=hostile       category=Hostile mobs
+  ender_dragon                    type=mob           category=Hostile mobs
+
+--- blocks.json :: material (top 20) ---
+   374  mineable/pickaxe
+   315  default
+   274  mineable/axe
+   108  incorrect_for_wooden_tool
+    36  mineable/shovel
+    18  mineable/hoe
+    16  wool
+    11  leaves;mineable/hoe
+     6  plant;mineable/axe
+     3  gourd;mineable/axe
+     2  vine_or_glow_lichen;plant;mineable/axe
+     2  sword_instantly_mines
+     1  coweb
+
+--- blocks.json :: boundingBox ---
+   922  block
+   244  empty
+
+Blocos com drops definidos: 992/1166
+Exemplo de bloco com drops:
+  stone: drops=[35], harvestTools={'913': True, '918': True, '923': True, '928': True, '933': True, '938': True, '943': True}
+  granite: drops=[2], harvestTools={'913': True, '918': True, '923': True, '928': True, '933': True, '938': True, '943': True}
+  polished_granite: drops=[3], harvestTools={'913': True, '918': True, '923': True, '928': True, '933': True, '938': True, '943': True}
+
+--- biomes.json :: dimension ---
+    55  overworld
+     5  nether
+     5  end
+
+--- biomes.json :: category ---
+     9  forest
+     9  ocean
+     5  nether
+     5  the_end
+     4  mountain
+     4  taiga
+     3  mesa
+     3  jungle
+     3  beach
+     3  underground
+     3  ice
+     3  plains
+     3  savanna
+     2  none
+     2  extreme_hills
+     1  desert
+     1  mushroom
+     1  river
+     1  swamp
+
+--- enchantments.json :: category ---
+     5  armor
+     4  trident
+     4  foot_armor
+     4  bow
+     3  mace
+     3  crossbow
+     2  head_armor
+     2  weapon
+     2  mining_loot
+     2  melee_weapon
+     2  fishing
+     2  durability
+     1  equippable
+     1  mining
+     1  fire_aspect
+     1  lunge
+     1  sharp_weapon
+     1  sweeping
+     1  leg_armor
+     1  vanishing
+
+--- Enchantments com exclude (incompatibilidades) ---
+  bane_of_arthropods         exclude=['breach', 'density', 'impaling', 'sharpness', 'smite']
+  blast_protection           exclude=['fire_protection', 'projectile_protection', 'protection']
+  breach                     exclude=['bane_of_arthropods', 'density', 'impaling', 'sharpness', 'smite']
+  channeling                 exclude=['riptide']
+  density                    exclude=['bane_of_arthropods', 'breach', 'impaling', 'sharpness', 'smite']
+  depth_strider              exclude=['frost_walker']
+  fire_protection            exclude=['blast_protection', 'projectile_protection', 'protection']
+  fortune                    exclude=['silk_touch']
+  frost_walker               exclude=['depth_strider']
+  impaling                   exclude=['bane_of_arthropods', 'breach', 'density', 'sharpness', 'smite']
+  infinity                   exclude=['mending']
+  loyalty                    exclude=['riptide']
+  mending                    exclude=['infinity']
+  multishot                  exclude=['piercing']
+  piercing                   exclude=['multishot']
+  projectile_protection      exclude=['blast_protection', 'fire_protection', 'protection']
+  protection                 exclude=['blast_protection', 'fire_protection', 'projectile_protection']
+  riptide                    exclude=['channeling', 'loyalty']
+  sharpness                  exclude=['bane_of_arthropods', 'breach', 'density', 'impaling', 'smite']
+  silk_touch                 exclude=['fortune']
+  smite                      exclude=['bane_of_arthropods', 'breach', 'density', 'impaling', 'sharpness']
+
+--- effects.json :: type ---
+    20  good
+    20  bad
+
+--- Items com maxDurability: 84 ---
+Primeiros 20:
+  carrot_on_a_stick               dur=   25  repairWith=None  enchCat=['durability', 'vanishing']
+  warped_fungus_on_a_stick        dur=  100  repairWith=None  enchCat=['durability', 'vanishing']
+  elytra                          dur=  432  repairWith=['phantom_membrane']  enchCat=['equippable', 'durability', 'vanishing']
+  turtle_helmet                   dur=  275  repairWith=['turtle_scute']  enchCat=['head_armor', 'equippable', 'armor', 'durability', 'vanishing']
+  wolf_armor                      dur=   64  repairWith=['armadillo_scute']  enchCat=None
+  flint_and_steel                 dur=   64  repairWith=None  enchCat=['durability', 'vanishing']
+  bow                             dur=  384  repairWith=None  enchCat=['bow', 'durability', 'vanishing']
+  wooden_sword                    dur=   59  repairWith=['oak_planks', 'spruce_planks', 'birch_planks', 'jungle_planks', 'acacia_planks', 'cherry_planks', 'dark_oak_planks', 'pale_oak_planks', 'mangrove_planks', 'bamboo_planks', 'crimson_planks', 'warped_planks']  enchCat=['weapon', 'fire_aspect', 'melee_weapon', 'durability', 'sharp_weapon', 'sweeping', 'vanishing']
+  wooden_shovel                   dur=   59  repairWith=['oak_planks', 'spruce_planks', 'birch_planks', 'jungle_planks', 'acacia_planks', 'cherry_planks', 'dark_oak_planks', 'pale_oak_planks', 'mangrove_planks', 'bamboo_planks', 'crimson_planks', 'warped_planks']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  wooden_pickaxe                  dur=   59  repairWith=['oak_planks', 'spruce_planks', 'birch_planks', 'jungle_planks', 'acacia_planks', 'cherry_planks', 'dark_oak_planks', 'pale_oak_planks', 'mangrove_planks', 'bamboo_planks', 'crimson_planks', 'warped_planks']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  wooden_axe                      dur=   59  repairWith=['oak_planks', 'spruce_planks', 'birch_planks', 'jungle_planks', 'acacia_planks', 'cherry_planks', 'dark_oak_planks', 'pale_oak_planks', 'mangrove_planks', 'bamboo_planks', 'crimson_planks', 'warped_planks']  enchCat=['weapon', 'mining', 'mining_loot', 'durability', 'sharp_weapon', 'vanishing']
+  wooden_hoe                      dur=   59  repairWith=['oak_planks', 'spruce_planks', 'birch_planks', 'jungle_planks', 'acacia_planks', 'cherry_planks', 'dark_oak_planks', 'pale_oak_planks', 'mangrove_planks', 'bamboo_planks', 'crimson_planks', 'warped_planks']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  copper_sword                    dur=  190  repairWith=['copper_ingot']  enchCat=['weapon', 'fire_aspect', 'melee_weapon', 'durability', 'sharp_weapon', 'sweeping', 'vanishing']
+  copper_shovel                   dur=  190  repairWith=['copper_ingot']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  copper_pickaxe                  dur=  190  repairWith=['copper_ingot']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  copper_axe                      dur=  190  repairWith=['copper_ingot']  enchCat=['weapon', 'mining', 'mining_loot', 'durability', 'sharp_weapon', 'vanishing']
+  copper_hoe                      dur=  190  repairWith=['copper_ingot']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  stone_sword                     dur=  131  repairWith=['cobbled_deepslate', 'cobblestone', 'blackstone']  enchCat=['weapon', 'fire_aspect', 'melee_weapon', 'durability', 'sharp_weapon', 'sweeping', 'vanishing']
+  stone_shovel                    dur=  131  repairWith=['cobbled_deepslate', 'cobblestone', 'blackstone']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+  stone_pickaxe                   dur=  131  repairWith=['cobbled_deepslate', 'cobblestone', 'blackstone']  enchCat=['mining', 'mining_loot', 'durability', 'vanishing']
+
+--- Items com enchantCategories: 92 ---
+
+--- enchantCategories agregadas ---
+    92  vanishing
+    83  durability
+    38  equippable
+    29  armor
+    29  mining
+    28  mining_loot
+    22  weapon
+    21  sharp_weapon
+    15  fire_aspect
+    14  melee_weapon
+     8  head_armor
+     7  sweeping
+     7  leg_armor
+     7  foot_armor
+     7  lunge
+     1  bow
+     1  fishing
+     1  mace
+     1  trident
+     1  crossbow
+
+--- Recipes: 886 results ---
+  Shaped:    1359
+  Shapeless: 320
+
+Exemplo shapeless (result id 1101):
+{
+  "ingredients": [
+    1081,
+    1097
+  ],
+  "result": {
+    "id": 1101,
+    "count": 1
+  }
+}

@@ -1,0 +1,1600 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2026/minecraft/> .
+
+<http://rpcw.di.uminho.pt/2026/minecraft> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/IsaBlockStateOf
+:IsaBlockStateOf rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :hasBlockState .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/applicableTo
+:applicableTo rdf:type owl:ObjectProperty ;
+              owl:inverseOf :canBeEnchantedWith ;
+              rdfs:domain :Enchantment ;
+              rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/breedsWith
+:breedsWith rdf:type owl:ObjectProperty ;
+            rdfs:domain :PassiveMob ;
+            rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/canBeEnchantedWith
+:canBeEnchantedWith rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Item ;
+                    rdfs:range :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/canBurnIn
+:canBurnIn rdf:type owl:ObjectProperty ;
+           owl:inverseOf :usesFuel ;
+           rdfs:domain :Item ;
+           rdfs:range :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/canMine
+:canMine rdf:type owl:ObjectProperty ;
+         owl:inverseOf :minedWith ;
+         rdfs:domain :Tool ;
+         rdfs:range :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/contains
+:contains rdf:type owl:ObjectProperty ;
+          owl:inverseOf :locatedIn ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:domain :Environment ;
+          rdfs:range :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/containsItem
+:containsItem rdf:type owl:ObjectProperty ;
+              owl:inverseOf :storedIn ;
+              rdfs:domain :Container ;
+              rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/craftedBy
+:craftedBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :obtainedFrom ;
+           owl:inverseOf :produces ;
+           rdfs:domain :Item ;
+           rdfs:range :Recipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/droppedBy
+:droppedBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :obtainedFrom ;
+           owl:inverseOf :drops ;
+           rdfs:domain :Item ;
+           rdfs:range :Mob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/drops
+:drops rdf:type owl:ObjectProperty ;
+       rdfs:domain :Mob ;
+       rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/foundIn
+:foundIn rdf:type owl:ObjectProperty ;
+         rdfs:domain :GameObject ;
+         rdfs:range :Environment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/generatesIn
+:generatesIn rdf:type owl:ObjectProperty ;
+             owl:inverseOf :hasStructure ;
+             rdfs:domain :Structure ;
+             rdfs:range :Biome .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasBlockState
+:hasBlockState rdf:type owl:ObjectProperty ;
+               rdfs:domain :Block ;
+               rdfs:range :BlockState .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasEffect
+:hasEffect rdf:type owl:ObjectProperty ;
+           rdfs:domain :Item ;
+           rdfs:range :Effect .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasIngredient
+:hasIngredient rdf:type owl:ObjectProperty ;
+               owl:inverseOf :usedIn ;
+               rdfs:domain :Recipe ;
+               rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasSlot
+:hasSlot rdf:type owl:ObjectProperty ;
+         rdfs:domain :Recipe ;
+         rdfs:range :RecipeSlot .
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasSpawn
+:hasSpawn rdf:type owl:ObjectProperty ;
+          owl:inverseOf :spawnsIn ;
+          rdfs:domain :Biome ;
+          rdfs:range :Mob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasStructure
+:hasStructure rdf:type owl:ObjectProperty ;
+              rdfs:domain :Biome ;
+              rdfs:range :Structure .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/immuneTo
+:immuneTo rdf:type owl:ObjectProperty ;
+          rdfs:domain :Mob ;
+          rdfs:range :Effect .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/incompatibleWith
+:incompatibleWith rdf:type owl:ObjectProperty ,
+                           owl:SymmetricProperty ;
+                  rdfs:domain :Enchantment ;
+                  rdfs:range :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ,
+                    owl:TransitiveProperty ;
+           rdfs:domain :GameObject ;
+           rdfs:range :Environment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/madeOfMaterial
+:madeOfMaterial rdf:type owl:ObjectProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Item ;
+                rdfs:range :MaterialTier .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/milkableFrom
+:milkableFrom rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :obtainedFrom ;
+              rdfs:domain :Item ;
+              rdfs:range :Mob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minedDrops
+:minedDrops rdf:type owl:ObjectProperty ;
+            owl:inverseOf :minedFrom ;
+            rdfs:domain :Block ;
+            rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minedFrom
+:minedFrom rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :obtainedFrom ;
+           rdfs:domain :Item ;
+           rdfs:range :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minedWith
+:minedWith rdf:type owl:ObjectProperty ;
+           rdfs:domain :Block ;
+           rdfs:range :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/obtainedFrom
+:obtainedFrom rdf:type owl:ObjectProperty ;
+              rdfs:domain :Item ;
+              rdfs:range :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/opensAccess
+:opensAccess rdf:type owl:ObjectProperty ;
+             owl:inverseOf :requiredToEnter ;
+             rdfs:domain :Item ;
+             rdfs:range :Dimension .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/produces
+:produces rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Recipe ;
+          rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/requiredToEnter
+:requiredToEnter rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Dimension ;
+                 rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/requiresMinTier
+:requiresMinTier rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Block ;
+                 rdfs:range :MaterialTier .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ridesOn
+:ridesOn rdf:type owl:ObjectProperty ;
+         rdfs:domain :Entity ;
+         rdfs:range :Vehicle .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/shearedFrom
+:shearedFrom rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :obtainedFrom ;
+             rdfs:domain :Item ;
+             rdfs:range :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/slotItem
+:slotItem rdf:type owl:ObjectProperty ;
+          rdfs:domain :RecipeSlot ;
+          rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/smeltedFrom
+:smeltedFrom rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :obtainedFrom ;
+             owl:inverseOf :smeltsInto ;
+             rdfs:domain :Item ;
+             rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/smeltsInto
+:smeltsInto rdf:type owl:ObjectProperty ;
+            rdfs:domain :Item ;
+            rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/spawnsIn
+:spawnsIn rdf:type owl:ObjectProperty ;
+          rdfs:domain :Mob ;
+          rdfs:range :Biome .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/storedIn
+:storedIn rdf:type owl:ObjectProperty ;
+          rdfs:domain :Item ;
+          rdfs:range :Container .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/tamedWith
+:tamedWith rdf:type owl:ObjectProperty ;
+           rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/usedIn
+:usedIn rdf:type owl:ObjectProperty ;
+        rdfs:domain :Item ;
+        rdfs:range :Recipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/usesFuel
+:usesFuel rdf:type owl:ObjectProperty ;
+          rdfs:domain :FunctionalBlock ;
+          rdfs:range :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/weakAgainst
+:weakAgainst rdf:type owl:ObjectProperty ;
+             rdfs:domain :Mob ;
+             rdfs:range :Item .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BlockStateNumValues
+:BlockStateNumValues rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :BlockState ;
+                     rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BlockStateType
+:BlockStateType rdf:type owl:DatatypeProperty ;
+                rdfs:domain :BlockState ;
+                rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/affectedByGravity
+:affectedByGravity rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain :Block ;
+                   rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/armorPoints
+:armorPoints rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Armor ;
+             rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/armorToughness
+:armorToughness rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Armor ;
+                rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/attackDamage
+:attackDamage rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :Item ;
+              rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/attackSpeed
+:attackSpeed rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Item ;
+             rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/biomeCategory
+:biomeCategory rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Biome ;
+               rdfs:range xsd:string ;
+               rdfs:comment "\"forest\", \"ocean\", etc." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/blastResistance
+:blastResistance rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Block ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "resistência a explosões" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/boundingBox
+:boundingBox rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Block ;
+             rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/defaultStateId
+:defaultStateId rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Block ;
+                rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/effectiveQuality
+:effectiveQuality rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :Food ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "foodPoints + saturation" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/emitLight
+:emitLight rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Block ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "nível de luz 0-15" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/enchantmentWeight
+:enchantmentWeight rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   rdfs:domain :Enchantment ;
+                   rdfs:range xsd:integer ;
+                   rdfs:comment "Raridade" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/entityHeight
+:entityHeight rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :Entity ;
+              rdfs:range xsd:float ;
+              rdfs:comment "hitbox height" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/entityWidth
+:entityWidth rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Entity ;
+             rdfs:range xsd:float ;
+             rdfs:comment "hitbox width" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/experienceDrop
+:experienceDrop rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Mob ;
+                rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/filterLight
+:filterLight rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Block ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "luz filtrada 0-15" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/foodPoints
+:foodPoints rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Food ;
+            rdfs:range xsd:float ;
+            rdfs:comment "fome restabelecida" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hardness
+:hardness rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Block ;
+          rdfs:range xsd:float ;
+          rdfs:comment "tempo de mineração base" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasDisplayName
+:hasDisplayName rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Effect ,
+                            :Enchantment ,
+                            :GameObject ;
+                rdfs:range xsd:string ;
+                rdfs:comment "nome legível \"Stone\"" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasID
+:hasID rdf:type owl:DatatypeProperty ,
+                owl:FunctionalProperty ;
+       rdfs:domain :Effect ,
+                   :Enchantment ,
+                   :GameObject ;
+       rdfs:range xsd:integer ;
+       rdfs:comment "ID numérico PrismarineJS" .
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/blockID
+:blockID rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Block ;
+         rdfs:range xsd:integer ;
+         rdfs:comment "ID do recurso enquanto bloco no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/itemID
+:itemID rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Item ;
+        rdfs:range xsd:integer ;
+        rdfs:comment "ID do recurso enquanto item no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/entityID
+:entityID rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Entity ;
+          rdfs:range xsd:integer ;
+          rdfs:comment "ID do recurso enquanto entidade no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/biomeID
+:biomeID rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Biome ;
+         rdfs:range xsd:integer ;
+         rdfs:comment "ID do recurso enquanto bioma no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/effectID
+:effectID rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Effect ;
+          rdfs:range xsd:integer ;
+          rdfs:comment "ID do recurso enquanto efeito no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/enchantmentID
+:enchantmentID rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Enchantment ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "ID do recurso enquanto encantamento no dataset PrismarineJS." .
+               
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasName
+:hasName rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Effect ,
+                     :Enchantment ,
+                     :GameObject ;
+         rdfs:range xsd:string ;
+         rdfs:comment "nome interno \"minecraft:stone\"" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/hasPrecipitation
+:hasPrecipitation rdf:type owl:DatatypeProperty ,
+                           owl:FunctionalProperty ;
+                  rdfs:domain :Biome ;
+                  rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/health
+:health rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Mob ;
+        rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isBurnableInSunlight
+:isBurnableInSunlight rdf:type owl:DatatypeProperty ,
+                               owl:FunctionalProperty ;
+                      rdfs:domain :Mob ;
+                      rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isCurse
+:isCurse rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Enchantment ;
+         rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isDiggable
+:isDiggable rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Block ;
+            rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isDiscoverable
+:isDiscoverable rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Enchantment ;
+                rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isImmuneToFire
+:isImmuneToFire rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Mob ;
+                rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isRenewable
+:isRenewable rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :GameObject ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "dados manuais" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isTradeable
+:isTradeable rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Enchantment ;
+             rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isTransparent
+:isTransparent rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Block ;
+               rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/isTreasureOnly
+:isTreasureOnly rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Enchantment ;
+                rdfs:range xsd:boolean .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/knockbackResistance
+:knockbackResistance rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain :Armor ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "só netherite" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/materialCategory
+:materialCategory rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Block ;
+                  rdfs:range xsd:string .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/maxCostA
+:maxCostA rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Enchantment ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/maxCostB
+:maxCostB rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Enchantment ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/maxDurability
+:maxDurability rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Item ;
+               rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/maxLevel
+:maxLevel rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Enchantment ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/maxStateId
+:maxStateId rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Block ;
+            rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minCostA
+:minCostA rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Enchantment ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minCostB
+:minCostB rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Enchantment ;
+          rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/minStateId
+:minStateId rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Block ;
+            rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/mobAttackDamage
+:mobAttackDamage rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Mob ;
+                 rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/outputQuantity
+:outputQuantity rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Recipe ;
+                rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/saturation
+:saturation rdf:type owl:DatatypeProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Food ;
+            rdfs:range xsd:float .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/saturationRatio
+:saturationRatio rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Food ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "saturation / foodPoints" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/slotColumn
+:slotColumn rdf:type owl:DatatypeProperty ;
+            rdfs:domain :RecipeSlot ;
+            rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/slotRow
+:slotRow rdf:type owl:DatatypeProperty ;
+         rdfs:domain :RecipeSlot ;
+         rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/stackSize
+:stackSize rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :GameObject ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "max stack (1,16.64)" .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/temperature
+:temperature rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Biome ;
+             rdfs:range xsd:float .
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/tierOrder
+:tierOrder rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :MaterialTier ;
+           rdfs:range xsd:integer .
+           
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/AmbientMob
+:AmbientMob rdf:type owl:Class ;
+            rdfs:subClassOf :Mob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Animal
+:Animal rdf:type owl:Class ;
+        rdfs:subClassOf :PassiveMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Anvil
+:Anvil rdf:type owl:Class ;
+       rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Armor
+:Armor rdf:type owl:Class ;
+       rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ArmorEnchantment
+:ArmorEnchantment rdf:type owl:Class ;
+                  rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ArthropodMob
+:ArthropodMob rdf:type owl:Class ;
+              rdfs:subClassOf :HostileMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Axe
+:Axe rdf:type owl:Class ;
+     rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Beacon
+:Beacon rdf:type owl:Class ;
+        rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Bed
+:Bed rdf:type owl:Class ;
+     rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BeneficialEffect
+:BeneficialEffect rdf:type owl:Class ;
+                  rdfs:subClassOf :Effect ;
+                  owl:disjointWith :HarmfulEffect .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Biome
+:Biome rdf:type owl:Class ;
+       rdfs:subClassOf :Environment ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :locatedIn ;
+                         owl:someValuesFrom :Dimension
+                       ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Block
+:Block rdf:type owl:Class ;
+       rdfs:subClassOf :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BlockState
+:BlockState rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Boat
+:Boat rdf:type owl:Class ;
+      rdfs:subClassOf :Vehicle .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Book
+:Book rdf:type owl:Class ;
+      rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Boots
+:Boots rdf:type owl:Class ;
+       rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Bow
+:Bow rdf:type owl:Class ;
+     rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BowEnchantment
+:BowEnchantment rdf:type owl:Class ;
+                rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BrewingRecipe
+:BrewingRecipe rdf:type owl:Class ;
+               rdfs:subClassOf :Recipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/BrewingStand
+:BrewingStand rdf:type owl:Class ;
+              rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Bucket
+:Bucket rdf:type owl:Class ;
+        rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Chestplate
+:Chestplate rdf:type owl:Class ;
+            rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Container
+:Container rdf:type owl:Class ;
+           rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CookedFood
+:CookedFood rdf:type owl:Class ;
+            rdfs:subClassOf :Food .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CraftedBlock
+:CraftedBlock rdf:type owl:Class ;
+              rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CraftingRecipe
+:CraftingRecipe rdf:type owl:Class ;
+                rdfs:subClassOf :Recipe ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasIngredient ;
+                                  owl:maxQualifiedCardinality "9"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Item
+                                ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CraftingStation
+:CraftingStation rdf:type owl:Class ;
+                 rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Crop
+:Crop rdf:type owl:Class ;
+      rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Crossbow
+:Crossbow rdf:type owl:Class ;
+          rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CrossbowEnchantment
+:CrossbowEnchantment rdf:type owl:Class ;
+                     rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/CurseEnchantment
+:CurseEnchantment rdf:type owl:Class ;
+                  rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Decoration
+:Decoration rdf:type owl:Class ;
+            rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Dimension
+:Dimension rdf:type owl:Class ;
+           rdfs:subClassOf :Environment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/DimensionalStructure
+:DimensionalStructure rdf:type owl:Class ;
+                      rdfs:subClassOf :Structure .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Dirt
+:Dirt rdf:type owl:Class ;
+      rdfs:subClassOf :NaturalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Door
+:Door rdf:type owl:Class ;
+      rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/DurabilityEnchantment
+:DurabilityEnchantment rdf:type owl:Class ;
+                       rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Dye
+:Dye rdf:type owl:Class ;
+     rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Effect
+:Effect rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Elytra
+:Elytra rdf:type owl:Class ;
+        rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/EnchantingTable
+:EnchantingTable rdf:type owl:Class ;
+                 rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Enchantment
+:Enchantment rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/EndBiome
+:EndBiome rdf:type owl:Class ;
+          rdfs:subClassOf :Biome .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Entity
+:Entity rdf:type owl:Class ;
+        rdfs:subClassOf :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Environment
+:Environment rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/EquippableEnchantment
+:EquippableEnchantment rdf:type owl:Class ;
+                       rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Fence
+:Fence rdf:type owl:Class ;
+       rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Fire_aspectEnchantment
+:Fire_aspectEnchantment rdf:type owl:Class ;
+                        rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/FishingEnchantment
+:FishingEnchantment rdf:type owl:Class ;
+                    rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/FishingRod
+:FishingRod rdf:type owl:Class ;
+            rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/FlintAndSteel
+:FlintAndSteel rdf:type owl:Class ;
+               rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Flower
+:Flower rdf:type owl:Class ;
+        rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/FluidBlock
+:FluidBlock rdf:type owl:Class ;
+            rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Food
+:Food rdf:type owl:Class ;
+      rdfs:subClassOf :Item ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :foodPoints ;
+                        owl:someValuesFrom xsd:float
+                      ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Foot_armorEnchantment
+:Foot_armorEnchantment rdf:type owl:Class ;
+                       rdfs:subClassOf :ArmorEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/FunctionalBlock
+:FunctionalBlock rdf:type owl:Class ;
+                 rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Fungus
+:Fungus rdf:type owl:Class ;
+        rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Furnace
+:Furnace rdf:type owl:Class ;
+         rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/GameObject
+:GameObject rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Gem
+:Gem rdf:type owl:Class ;
+     rdfs:subClassOf :Material .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/GemOre
+:GemOre rdf:type owl:Class ;
+        rdfs:subClassOf :Ore .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/GlassBlock
+:GlassBlock rdf:type owl:Class ;
+            rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/GravityBlock
+:GravityBlock rdf:type owl:Class ;
+              rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/HarmfulEffect
+:HarmfulEffect rdf:type owl:Class ;
+               rdfs:subClassOf :Effect .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Head_armorEnchantment
+:Head_armorEnchantment rdf:type owl:Class ;
+                       rdfs:subClassOf :ArmorEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Helmet
+:Helmet rdf:type owl:Class ;
+        rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Hoe
+:Hoe rdf:type owl:Class ;
+     rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/HostileMob
+:HostileMob rdf:type owl:Class ;
+            rdfs:subClassOf :Mob ;
+            owl:disjointWith :PassiveMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/IndestructibleBlock
+:IndestructibleBlock rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Block
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :hardness ;
+                                                                  owl:hasValue "-1.0"^^xsd:float
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Ingot
+:Ingot rdf:type owl:Class ;
+       rdfs:subClassOf :Material .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Item
+:Item rdf:type owl:Class ;
+      rdfs:subClassOf :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Leaves
+:Leaves rdf:type owl:Class ;
+        rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Leg_armorEnchantment
+:Leg_armorEnchantment rdf:type owl:Class ;
+                      rdfs:subClassOf :ArmorEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Leggings
+:Leggings rdf:type owl:Class ;
+          rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/LightEmittingBlock
+:LightEmittingBlock rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( :Block
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :emitLight ;
+                                                                 owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                      owl:onDatatype xsd:integer ;
+                                                                                      owl:withRestrictions ( [ xsd:minExclusive 0
+                                                                                                             ]
+                                                                                                           )
+                                                                                    ]
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/LightSource
+:LightSource rdf:type owl:Class ;
+             rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Log
+:Log rdf:type owl:Class ;
+     rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/LungeEnchantment
+:LungeEnchantment rdf:type owl:Class ;
+                  rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Mace
+:Mace rdf:type owl:Class ;
+      rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MaceEnchantment
+:MaceEnchantment rdf:type owl:Class ;
+                 rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Material
+:Material rdf:type owl:Class ;
+          rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MaterialTier
+:MaterialTier rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Melee_weaponEnchantment
+:Melee_weaponEnchantment rdf:type owl:Class ;
+                         rdfs:subClassOf :WeaponEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MetalOre
+:MetalOre rdf:type owl:Class ;
+          rdfs:subClassOf :Ore .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Minecart
+:Minecart rdf:type owl:Class ;
+          rdfs:subClassOf :Vehicle .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MiningEnchantment
+:MiningEnchantment rdf:type owl:Class ;
+                   rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Mining_lootEnchantment
+:Mining_lootEnchantment rdf:type owl:Class ;
+                        rdfs:subClassOf :MiningEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Mob
+:Mob rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Entity
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :health ;
+                                                  owl:someValuesFrom xsd:float
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MobEquipment
+:MobEquipment rdf:type owl:Class ;
+              rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/MusicDisc
+:MusicDisc rdf:type owl:Class ;
+           rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NaturalBlock
+:NaturalBlock rdf:type owl:Class ;
+              rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NaturalStructure
+:NaturalStructure rdf:type owl:Class ;
+                  rdfs:subClassOf :Structure .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NetherBiome
+:NetherBiome rdf:type owl:Class ;
+             rdfs:subClassOf :Biome .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NetherMob
+:NetherMob rdf:type owl:Class ;
+           rdfs:subClassOf :HostileMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NonRenewableResource
+:NonRenewableResource rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( :GameObject
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :isRenewable ;
+                                                                   owl:hasValue "false"^^xsd:boolean
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/NonStackableItem
+:NonStackableItem rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Item
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :stackSize ;
+                                                               owl:hasValue 1
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Nugget
+:Nugget rdf:type owl:Class ;
+        rdfs:subClassOf :Material .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Ore
+:Ore rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :NaturalBlock
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :minedWith ;
+                                                  owl:allValuesFrom :Pickaxe
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/OrganicMaterial
+:OrganicMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf :Material .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Other
+:Other rdf:type owl:Class ;
+       rdfs:subClassOf :Entity .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/OverworldBiome
+:OverworldBiome rdf:type owl:Class ;
+                rdfs:subClassOf :Biome .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/PassiveMob
+:PassiveMob rdf:type owl:Class ;
+            rdfs:subClassOf :Mob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Pickaxe
+:Pickaxe rdf:type owl:Class ;
+         rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/PlaceableBlock
+:PlaceableBlock rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Block
+                                                           :Item
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :GameObject .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Planks
+:Planks rdf:type owl:Class ;
+        rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Plant
+:Plant rdf:type owl:Class ;
+       rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Player
+:Player rdf:type owl:Class ;
+        rdfs:subClassOf :Entity .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Potion
+:Potion rdf:type owl:Class ;
+        rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Projectile
+:Projectile rdf:type owl:Class ;
+            rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ProjectileEntity
+:ProjectileEntity rdf:type owl:Class ;
+                  rdfs:subClassOf :Entity .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/RawFood
+:RawFood rdf:type owl:Class ;
+         rdfs:subClassOf :Food .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/RawMineral
+:RawMineral rdf:type owl:Class ;
+            rdfs:subClassOf :Material .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Recipe
+:Recipe rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasIngredient ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Item
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :produces ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Item
+                            ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/RecipeSlot
+:RecipeSlot rdf:type owl:Class ;
+            rdfs:comment "Um slot específico na grelha de crafting (3x3)." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/RedstoneBlock
+:RedstoneBlock rdf:type owl:Class ;
+               rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/RenewableResource
+:RenewableResource rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( :GameObject
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty :isRenewable ;
+                                                                owl:hasValue "true"^^xsd:boolean
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Sand
+:Sand rdf:type owl:Class ;
+      rdfs:subClassOf :NaturalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Sapling
+:Sapling rdf:type owl:Class ;
+         rdfs:subClassOf :Plant .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ShapedRecipe
+:ShapedRecipe rdf:type owl:Class ;
+              rdfs:subClassOf :CraftingRecipe ;
+              owl:disjointWith :ShapelessRecipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/ShapelessRecipe
+:ShapelessRecipe rdf:type owl:Class ;
+                 rdfs:subClassOf :CraftingRecipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Sharp_weaponEnchantment
+:Sharp_weaponEnchantment rdf:type owl:Class ;
+                         rdfs:subClassOf :WeaponEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Shears
+:Shears rdf:type owl:Class ;
+        rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Shield
+:Shield rdf:type owl:Class ;
+        rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Shovel
+:Shovel rdf:type owl:Class ;
+        rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Sign
+:Sign rdf:type owl:Class ;
+      rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Slab
+:Slab rdf:type owl:Class ;
+      rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SmeltingRecipe
+:SmeltingRecipe rdf:type owl:Class ;
+                rdfs:subClassOf :Recipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SmithingRecipe
+:SmithingRecipe rdf:type owl:Class ;
+                rdfs:subClassOf :Recipe .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SmithingTemplate
+:SmithingTemplate rdf:type owl:Class ;
+                  rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SpawnEgg
+:SpawnEgg rdf:type owl:Class ;
+          rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SpecialFood
+:SpecialFood rdf:type owl:Class ;
+             rdfs:subClassOf :Food .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SpecialTool
+:SpecialTool rdf:type owl:Class ;
+             rdfs:subClassOf :Tool .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/StackableItem
+:StackableItem rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( :Item
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty :stackSize ;
+                                                            owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                 owl:onDatatype xsd:integer ;
+                                                                                 owl:withRestrictions ( [ xsd:minExclusive 1
+                                                                                                        ]
+                                                                                                      )
+                                                                               ]
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Stairs
+:Stairs rdf:type owl:Class ;
+        rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Stone
+:Stone rdf:type owl:Class ;
+       rdfs:subClassOf :NaturalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/StorageBlock
+:StorageBlock rdf:type owl:Class ;
+              rdfs:subClassOf :FunctionalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Structure
+:Structure rdf:type owl:Class ;
+           rdfs:subClassOf :Environment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/SweepingEnchantment
+:SweepingEnchantment rdf:type owl:Class ;
+                     rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Sword
+:Sword rdf:type owl:Class ;
+       rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Terrain
+:Terrain rdf:type owl:Class ;
+         rdfs:subClassOf :NaturalBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Tool
+:Tool rdf:type owl:Class ;
+      rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/TransparentBlock
+:TransparentBlock rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :Block
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :isTransparent ;
+                                                               owl:hasValue "true"^^xsd:boolean
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf :Block .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Trident
+:Trident rdf:type owl:Class ;
+         rdfs:subClassOf :Weapon .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/TridentEnchantment
+:TridentEnchantment rdf:type owl:Class ;
+                    rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/UndeadMob
+:UndeadMob rdf:type owl:Class ;
+           rdfs:subClassOf :HostileMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/UtilityItem
+:UtilityItem rdf:type owl:Class ;
+             rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/VanishingEnchantment
+:VanishingEnchantment rdf:type owl:Class ;
+                      rdfs:subClassOf :EquippableEnchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Vehicle
+:Vehicle rdf:type owl:Class ;
+         rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Villager
+:Villager rdf:type owl:Class ;
+          rdfs:subClassOf :PassiveMob .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Wall
+:Wall rdf:type owl:Class ;
+      rdfs:subClassOf :CraftedBlock .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Weapon
+:Weapon rdf:type owl:Class ;
+        rdfs:subClassOf :Item .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/WeaponEnchantment
+:WeaponEnchantment rdf:type owl:Class ;
+                   rdfs:subClassOf :Enchantment .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/WolfArmor
+:WolfArmor rdf:type owl:Class ;
+           rdfs:subClassOf :Armor .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/Wool
+:Wool rdf:type owl:Class ;
+      rdfs:subClassOf :CraftedBlock .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

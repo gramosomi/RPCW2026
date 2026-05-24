@@ -1,0 +1,11 @@
+[
+  {"mob": "zombie", "drops": ["rotten_flesh"]},
+  {"mob": "skeleton", "drops": ["bone", "arrow"]},
+  {"mob": "creeper", "drops": ["gunpowder"]},
+  {"mob": "spider", "drops": ["string"]},
+  {"mob": "cow", "drops": ["beef", "leather"]},
+  {"mob": "chicken", "drops": ["chicken", "feather"]},
+  {"mob": "sheep", "drops": ["mutton", "white_wool"]},
+  {"mob": "blaze", "drops": ["blaze_rod"]},
+  {"mob": "enderman", "drops": ["ender_pearl"]}
+]

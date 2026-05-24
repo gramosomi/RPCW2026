@@ -1,0 +1,10 @@
+[
+  {"block": "sand", "affectedByGravity": true},
+  {"block": "red_sand", "affectedByGravity": true},
+  {"block": "gravel", "affectedByGravity": true},
+  {"block": "suspicious_sand", "affectedByGravity": true},
+  {"block": "suspicious_gravel", "affectedByGravity": true},
+  {"block": "anvil", "affectedByGravity": true},
+  {"block": "chipped_anvil", "affectedByGravity": true},
+  {"block": "damaged_anvil", "affectedByGravity": true}
+]

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Classes{% endblock %}
+{% block page_heading %}Classes da Ontologia{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="section-header" style="margin-bottom: 20px;">
+        <span class="pill">{{ classes|length }} classes carregadas</span>
+        <p class="muted" style="font-family: var(--font-body); font-size: 14px;">Tipos definidos na ontologia no GraphDB.</p>
+    </div>
+
+    {% if classes %}
+    <div class="inventory-grid">
+        {% for cls in classes %}
+        <a class="inventory-slot" href="{{ url_for('ontology.class_detail', class_name=cls) }}">
+            <img src="{{ url_for('static', filename='icons/enchanted_book.png') }}" class="mc-icon" alt="Class">
+            <span>{{ cls }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h4>Sem classes disponíveis</h4>
+        <p>Não foi possível obter classes da ontologia.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

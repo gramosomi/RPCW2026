@@ -1,0 +1,588 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:badlands a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mesa"^^xsd:string ;
+    :biomeID 0 ;
+    :hasDisplayName "Badlands"^^xsd:string ;
+    :hasName "badlands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:bamboo_jungle a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "jungle"^^xsd:string ;
+    :biomeID 1 ;
+    :hasDisplayName "Bamboo Jungle"^^xsd:string ;
+    :hasName "bamboo_jungle"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.95"^^xsd:float .
+
+:basalt_deltas a :Biome,
+        :NetherBiome ;
+    :biomeCategory "nether"^^xsd:string ;
+    :biomeID 2 ;
+    :hasDisplayName "Basalt Deltas"^^xsd:string ;
+    :hasName "basalt_deltas"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:beach a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "beach"^^xsd:string ;
+    :biomeID 3 ;
+    :hasDisplayName "Beach"^^xsd:string ;
+    :hasName "beach"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:birch_forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 4 ;
+    :hasDisplayName "Birch Forest"^^xsd:string ;
+    :hasName "birch_forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.6"^^xsd:float .
+
+:cherry_grove a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 5 ;
+    :hasDisplayName "Cherry Grove"^^xsd:string ;
+    :hasName "cherry_grove"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:cold_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 6 ;
+    :hasDisplayName "Cold Ocean"^^xsd:string ;
+    :hasName "cold_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:crimson_forest a :Biome,
+        :NetherBiome ;
+    :biomeCategory "nether"^^xsd:string ;
+    :biomeID 7 ;
+    :hasDisplayName "Crimson Forest"^^xsd:string ;
+    :hasName "crimson_forest"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:dark_forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 8 ;
+    :hasDisplayName "Dark Forest"^^xsd:string ;
+    :hasName "dark_forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.7"^^xsd:float .
+
+:deep_cold_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 9 ;
+    :hasDisplayName "Deep Cold Ocean"^^xsd:string ;
+    :hasName "deep_cold_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:deep_dark a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "underground"^^xsd:string ;
+    :biomeID 10 ;
+    :hasDisplayName "Deep Dark"^^xsd:string ;
+    :hasName "deep_dark"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:deep_frozen_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 11 ;
+    :hasDisplayName "Deep Frozen Ocean"^^xsd:string ;
+    :hasName "deep_frozen_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:deep_lukewarm_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 12 ;
+    :hasDisplayName "Deep Lukewarm Ocean"^^xsd:string ;
+    :hasName "deep_lukewarm_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:deep_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 13 ;
+    :hasDisplayName "Deep Ocean"^^xsd:string ;
+    :hasName "deep_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:desert a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "desert"^^xsd:string ;
+    :biomeID 14 ;
+    :hasDisplayName "Desert"^^xsd:string ;
+    :hasName "desert"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:dripstone_caves a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "underground"^^xsd:string ;
+    :biomeID 15 ;
+    :hasDisplayName "Dripstone Caves"^^xsd:string ;
+    :hasName "dripstone_caves"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:end_barrens a :Biome,
+        :EndBiome ;
+    :biomeCategory "the_end"^^xsd:string ;
+    :biomeID 16 ;
+    :hasDisplayName "End Barrens"^^xsd:string ;
+    :hasName "end_barrens"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:end_highlands a :Biome,
+        :EndBiome ;
+    :biomeCategory "the_end"^^xsd:string ;
+    :biomeID 17 ;
+    :hasDisplayName "End Highlands"^^xsd:string ;
+    :hasName "end_highlands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:end_midlands a :Biome,
+        :EndBiome ;
+    :biomeCategory "the_end"^^xsd:string ;
+    :biomeID 18 ;
+    :hasDisplayName "End Midlands"^^xsd:string ;
+    :hasName "end_midlands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:eroded_badlands a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mesa"^^xsd:string ;
+    :biomeID 19 ;
+    :hasDisplayName "Eroded Badlands"^^xsd:string ;
+    :hasName "eroded_badlands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:flower_forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 20 ;
+    :hasDisplayName "Flower Forest"^^xsd:string ;
+    :hasName "flower_forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.7"^^xsd:float .
+
+:forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 21 ;
+    :hasDisplayName "Forest"^^xsd:string ;
+    :hasName "forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.7"^^xsd:float .
+
+:frozen_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 22 ;
+    :hasDisplayName "Frozen Ocean"^^xsd:string ;
+    :hasName "frozen_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.0"^^xsd:float .
+
+:frozen_peaks a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ice"^^xsd:string ;
+    :biomeID 23 ;
+    :hasDisplayName "Frozen Peaks"^^xsd:string ;
+    :hasName "frozen_peaks"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "-0.7"^^xsd:float .
+
+:frozen_river a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ice"^^xsd:string ;
+    :biomeID 24 ;
+    :hasDisplayName "Frozen River"^^xsd:string ;
+    :hasName "frozen_river"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.0"^^xsd:float .
+
+:grove a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 25 ;
+    :hasDisplayName "Grove"^^xsd:string ;
+    :hasName "grove"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "-0.2"^^xsd:float .
+
+:ice_spikes a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ice"^^xsd:string ;
+    :biomeID 26 ;
+    :hasDisplayName "Ice Spikes"^^xsd:string ;
+    :hasName "ice_spikes"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.0"^^xsd:float .
+
+:jagged_peaks a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mountain"^^xsd:string ;
+    :biomeID 27 ;
+    :hasDisplayName "Jagged Peaks"^^xsd:string ;
+    :hasName "jagged_peaks"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "-0.7"^^xsd:float .
+
+:jungle a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "jungle"^^xsd:string ;
+    :biomeID 28 ;
+    :hasDisplayName "Jungle"^^xsd:string ;
+    :hasName "jungle"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.95"^^xsd:float .
+
+:lukewarm_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 29 ;
+    :hasDisplayName "Lukewarm Ocean"^^xsd:string ;
+    :hasName "lukewarm_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:lush_caves a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "underground"^^xsd:string ;
+    :biomeID 30 ;
+    :hasDisplayName "Lush Caves"^^xsd:string ;
+    :hasName "lush_caves"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:mangrove_swamp a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 31 ;
+    :hasDisplayName "Mangrove Swamp"^^xsd:string ;
+    :hasName "mangrove_swamp"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:meadow a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mountain"^^xsd:string ;
+    :biomeID 32 ;
+    :hasDisplayName "Meadow"^^xsd:string ;
+    :hasName "meadow"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:mushroom_fields a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mushroom"^^xsd:string ;
+    :biomeID 33 ;
+    :hasDisplayName "Mushroom Fields"^^xsd:string ;
+    :hasName "mushroom_fields"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.9"^^xsd:float .
+
+:nether_wastes a :Biome,
+        :NetherBiome ;
+    :biomeCategory "nether"^^xsd:string ;
+    :biomeID 34 ;
+    :hasDisplayName "Nether Wastes"^^xsd:string ;
+    :hasName "nether_wastes"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 35 ;
+    :hasDisplayName "Ocean"^^xsd:string ;
+    :hasName "ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:old_growth_birch_forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 36 ;
+    :hasDisplayName "Old Growth Birch Forest"^^xsd:string ;
+    :hasName "old_growth_birch_forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.6"^^xsd:float .
+
+:old_growth_pine_taiga a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "taiga"^^xsd:string ;
+    :biomeID 37 ;
+    :hasDisplayName "Old Growth Pine Taiga"^^xsd:string ;
+    :hasName "old_growth_pine_taiga"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.3"^^xsd:float .
+
+:old_growth_spruce_taiga a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "taiga"^^xsd:string ;
+    :biomeID 38 ;
+    :hasDisplayName "Old Growth Spruce Taiga"^^xsd:string ;
+    :hasName "old_growth_spruce_taiga"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.25"^^xsd:float .
+
+:pale_garden a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "none"^^xsd:string ;
+    :biomeID 39 ;
+    :hasDisplayName "Pale Garden"^^xsd:string ;
+    :hasName "pale_garden"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.7"^^xsd:float .
+
+:plains a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "plains"^^xsd:string ;
+    :biomeID 40 ;
+    :hasDisplayName "Plains"^^xsd:string ;
+    :hasName "plains"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:river a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "river"^^xsd:string ;
+    :biomeID 41 ;
+    :hasDisplayName "River"^^xsd:string ;
+    :hasName "river"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:savanna a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "savanna"^^xsd:string ;
+    :biomeID 42 ;
+    :hasDisplayName "Savanna"^^xsd:string ;
+    :hasName "savanna"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:savanna_plateau a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "savanna"^^xsd:string ;
+    :biomeID 43 ;
+    :hasDisplayName "Savanna Plateau"^^xsd:string ;
+    :hasName "savanna_plateau"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:small_end_islands a :Biome,
+        :EndBiome ;
+    :biomeCategory "the_end"^^xsd:string ;
+    :biomeID 44 ;
+    :hasDisplayName "Small End Islands"^^xsd:string ;
+    :hasName "small_end_islands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:snowy_beach a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "beach"^^xsd:string ;
+    :biomeID 45 ;
+    :hasDisplayName "Snowy Beach"^^xsd:string ;
+    :hasName "snowy_beach"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.05"^^xsd:float .
+
+:snowy_plains a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "plains"^^xsd:string ;
+    :biomeID 46 ;
+    :hasDisplayName "Snowy Plains"^^xsd:string ;
+    :hasName "snowy_plains"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.0"^^xsd:float .
+
+:snowy_slopes a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mountain"^^xsd:string ;
+    :biomeID 47 ;
+    :hasDisplayName "Snowy Slopes"^^xsd:string ;
+    :hasName "snowy_slopes"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "-0.3"^^xsd:float .
+
+:snowy_taiga a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "taiga"^^xsd:string ;
+    :biomeID 48 ;
+    :hasDisplayName "Snowy Taiga"^^xsd:string ;
+    :hasName "snowy_taiga"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "-0.5"^^xsd:float .
+
+:soul_sand_valley a :Biome,
+        :NetherBiome ;
+    :biomeCategory "nether"^^xsd:string ;
+    :biomeID 49 ;
+    :hasDisplayName "Soul Sand Valley"^^xsd:string ;
+    :hasName "soul_sand_valley"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:sparse_jungle a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "jungle"^^xsd:string ;
+    :biomeID 50 ;
+    :hasDisplayName "Sparse Jungle"^^xsd:string ;
+    :hasName "sparse_jungle"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.95"^^xsd:float .
+
+:stony_peaks a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mountain"^^xsd:string ;
+    :biomeID 51 ;
+    :hasDisplayName "Stony Peaks"^^xsd:string ;
+    :hasName "stony_peaks"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "1.0"^^xsd:float .
+
+:stony_shore a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "beach"^^xsd:string ;
+    :biomeID 52 ;
+    :hasDisplayName "Stony Shore"^^xsd:string ;
+    :hasName "stony_shore"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.2"^^xsd:float .
+
+:sunflower_plains a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "plains"^^xsd:string ;
+    :biomeID 53 ;
+    :hasDisplayName "Sunflower Plains"^^xsd:string ;
+    :hasName "sunflower_plains"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:swamp a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "swamp"^^xsd:string ;
+    :biomeID 54 ;
+    :hasDisplayName "Swamp"^^xsd:string ;
+    :hasName "swamp"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.8"^^xsd:float .
+
+:taiga a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "taiga"^^xsd:string ;
+    :biomeID 55 ;
+    :hasDisplayName "Taiga"^^xsd:string ;
+    :hasName "taiga"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.25"^^xsd:float .
+
+:the_end a :Biome,
+        :EndBiome ;
+    :biomeCategory "the_end"^^xsd:string ;
+    :biomeID 56 ;
+    :hasDisplayName "The End"^^xsd:string ;
+    :hasName "the_end"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:the_void a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "none"^^xsd:string ;
+    :biomeID 57 ;
+    :hasDisplayName "The Void"^^xsd:string ;
+    :hasName "the_void"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "0.5"^^xsd:float .
+
+:warm_ocean a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "ocean"^^xsd:string ;
+    :biomeID 58 ;
+    :hasDisplayName "Warm Ocean"^^xsd:string ;
+    :hasName "warm_ocean"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.5"^^xsd:float .
+
+:warped_forest a :Biome,
+        :NetherBiome ;
+    :biomeCategory "nether"^^xsd:string ;
+    :biomeID 59 ;
+    :hasDisplayName "Warped Forest"^^xsd:string ;
+    :hasName "warped_forest"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:windswept_forest a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "forest"^^xsd:string ;
+    :biomeID 60 ;
+    :hasDisplayName "Windswept Forest"^^xsd:string ;
+    :hasName "windswept_forest"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.2"^^xsd:float .
+
+:windswept_gravelly_hills a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "extreme_hills"^^xsd:string ;
+    :biomeID 61 ;
+    :hasDisplayName "Windswept Gravelly Hills"^^xsd:string ;
+    :hasName "windswept_gravelly_hills"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.2"^^xsd:float .
+
+:windswept_hills a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "extreme_hills"^^xsd:string ;
+    :biomeID 62 ;
+    :hasDisplayName "Windswept Hills"^^xsd:string ;
+    :hasName "windswept_hills"^^xsd:string ;
+    :hasPrecipitation true ;
+    :temperature "0.2"^^xsd:float .
+
+:windswept_savanna a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "savanna"^^xsd:string ;
+    :biomeID 63 ;
+    :hasDisplayName "Windswept Savanna"^^xsd:string ;
+    :hasName "windswept_savanna"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+
+:wooded_badlands a :Biome,
+        :OverworldBiome ;
+    :biomeCategory "mesa"^^xsd:string ;
+    :biomeID 64 ;
+    :hasDisplayName "Wooded Badlands"^^xsd:string ;
+    :hasName "wooded_badlands"^^xsd:string ;
+    :hasPrecipitation false ;
+    :temperature "2.0"^^xsd:float .
+

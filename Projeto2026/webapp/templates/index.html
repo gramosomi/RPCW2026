@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Início{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="home-feature-card" style="margin-bottom: 40px; text-align: center; padding: 40px;">
+    <span class="badge">Ontologia OWL</span>
+    <h1 style="font-family: var(--font-pixel); color: #ffffff; text-shadow: 3px 3px 0px #000; font-size: 20px; line-height: 1.6; margin-bottom: 20px;">
+        Exploração Semântica do<br><span style="color: #ffaa00;">Universo Minecraft</span>
+    </h1>
+    <p style="max-width: 600px; margin: 0 auto 30px; font-size: 16px;">
+        Aplicação web para navegação da ontologia, consulta de classes,
+        exploração de recursos e execução de queries de competência
+        sobre o domínio Minecraft.
+    </p>
+
+    <div class="hero-actions" style="display: flex; justify-content: center; gap: 15px;">
+        <a class="button button-primary" href="{{ url_for('ontology.list_classes') }}">Explorar classes</a>
+        <a class="button" href="{{ url_for('competency.competency') }}">Abrir queries</a>
+    </div>
+</div>
+
+<section class="home-section">
+    <h3 style="font-family: var(--font-pixel); font-size: 14px; text-transform: uppercase; margin-bottom: 20px; color: #333;">Módulos Principais</h3>
+
+    <div class="grid-3 home-cards" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div class="card home-feature-card">
+            <div class="feature-icon">
+                <img src="{{ url_for('static', filename='icons/enchanted_book.png') }}" class="mc-icon" style="width: 40px; height: 40px; margin-bottom: 15px;" alt="Classes">
+            </div>
+            <h3>Navegação</h3>
+            <p>Consulta a hierarquia ontológica e os tipos definidos no grafo.</p>
+        </div>
+
+        <div class="card home-feature-card">
+            <div class="feature-icon">
+                <img src="{{ url_for('static', filename='icons/crafting_table.png') }}" class="mc-icon" style="width: 40px; height: 40px; margin-bottom: 15px;" alt="Recursos">
+            </div>
+            <h3>Recursos</h3>
+            <p>Visualiza propriedades e relações associadas aos elementos.</p>
+        </div>
+
+        <div class="card home-feature-card">
+            <div class="feature-icon">
+                <img src="{{ url_for('static', filename='icons/compass.png') }}" class="mc-icon" style="width: 40px; height: 40px; margin-bottom: 15px;" alt="Queries">
+            </div>
+            <h3>Competência</h3>
+            <p>Executa consultas orientadas às perguntas centrais do domínio.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

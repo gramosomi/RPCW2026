@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Relação{% endblock %}
+{% block page_heading %}Adicionar Relação{% endblock %}
+
+{% block content %}
+<div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div class="card table-wrapper" style="padding: 20px;">
+        <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px;">Nova Relação (Object Property)</h3>
+        <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Liga dois indivíduos existentes na ontologia.</p>
+
+        <form method="post" class="styled-form">
+            <label for="subject_name">Sujeito (Recurso Origem)</label>
+            <input type="text" name="subject_name" id="subject_name" placeholder="Ex.: zombie" required>
+
+            <label for="predicate" style="margin-top: 15px;">Predicado (Relação)</label>
+            <input type="text" name="predicate" id="predicate" placeholder="Ex.: dropsItem" required>
+
+            <label for="object_name" style="margin-top: 15px;">Objeto (Recurso Destino)</label>
+            <input type="text" name="object_name" id="object_name" placeholder="Ex.: rotten_flesh" required>
+
+            <button type="submit" class="button button-primary" style="margin-top: 20px; width: 100%;">Criar Relação</button>
+        </form>
+
+        {% if message %}
+        <div class="mini-stat" style="margin-top: 20px;">
+            <span class="mini-stat-label">System Output</span>
+            <span class="mini-stat-value" style="font-size: 12px;">{{ message }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="home-feature-card">
+            <h3>Command Output</h3>
+            <div class="code-box">
+                > zombie dropsItem rotten_flesh<br>
+                > LINK ESTABLISHED
+            </div>
+            <p style="font-size: 14px; margin-bottom: 10px;">
+                Isto criará uma ligação do tipo Object Property entre dois indivíduos distintos (que já devem existir na ontologia).
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

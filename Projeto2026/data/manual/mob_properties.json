@@ -1,0 +1,9 @@
+[
+  {"mob": "zombie", "isBurnableInSunlight": true, "isImmuneToFire": false},
+  {"mob": "skeleton", "isBurnableInSunlight": true, "isImmuneToFire": false},
+  {"mob": "drowned", "isBurnableInSunlight": false, "isImmuneToFire": false},
+  {"mob": "creeper", "isBurnableInSunlight": false, "isImmuneToFire": false},
+  {"mob": "blaze", "isBurnableInSunlight": false, "isImmuneToFire": true},
+  {"mob": "magma_cube", "isBurnableInSunlight": false, "isImmuneToFire": true},
+  {"mob": "ghast", "isBurnableInSunlight": false, "isImmuneToFire": true}
+]

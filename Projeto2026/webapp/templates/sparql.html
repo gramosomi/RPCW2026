@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}SPARQL Livre{% endblock %}
+{% block page_heading %}Consola SPARQL Livre{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 20px;">
+    <div class="home-feature-card" style="display: flex; align-items: center; gap: 15px;">
+        <img src="{{ url_for('static', filename='icons/command_block_minecart.png') }}" class="mc-icon" style="width: 40px; height: 40px;" alt="Console">
+        <div>
+            <span class="badge">Terminal de Administrador</span>
+            <p style="margin: 5px 0 0 0; font-size: 14px; color: #aaaaaa;">Executa qualquer instrução SPARQL diretamente sobre as tabelas e grafos do GraphDB.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card table-wrapper" style="padding: 20px; margin-bottom: 20px;">
+    <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px; color: #333333;">Editor do Bloco de Comandos</h3>
+    <form method="post" class="styled-form">
+        <label for="sparql_query">Query SPARQL Livre</label>
+        <textarea 
+            name="sparql_query" 
+            id="sparql_query" 
+            rows="12" 
+            style="width: 100%; background-color: #000000; border: 4px solid #333333; box-shadow: inset 4px 4px 0px 0px #111111; color: #55ff55; font-family: 'Courier New', Courier, monospace; font-weight: bold; padding: 15px; font-size: 13px; resize: vertical; margin-bottom: 15px;"
+            required
+        >{{ query }}</textarea>
+        
+        <button type="submit" class="button button-primary" style="width: 100%;">Injetar SPARQL</button>
+    </form>
+</div>
+
+<div class="card">
+    <div class="section-header" style="margin-bottom: 20px;">
+        <span class="badge">Logs do Sistema</span>
+        <h3 style="font-family: var(--font-pixel); font-size: 14px; margin-top: 10px; color: #333333;">Resultados Obtidos</h3>
+    </div>
+
+    {% if error %}
+    <div class="empty-state">
+        <h4>Erro na Compilação da Query</h4>
+        <p>{{ error }}</p>
+    </div>
+    {% elif result and result.results.bindings %}
+    <div class="table-wrapper">
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    {% for var in result.head.vars %}
+                    <th style="color: #ffaa00;">?{{ var }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result.results.bindings %}
+                <tr>
+                    {% for var in result.head.vars %}
+                    <td>
+                        {% if row[var] is defined %}
+                            {% set val = row[var].value %}
+                            {% if row[var].type == 'uri' %}
+                                {% set local = val.split('#')[-1] if '#' in val else val.split('/')[-1] %}
+                                <a class="table-link" style="color: #ffffff; text-decoration: underline; text-decoration-color: #55ff55;" href="{{ url_for('ontology.resource_detail', resource_name=local) }}">
+                                    {{ local }}
+                                </a>
+                            {% else %}
+                                <span style="color: #dddddd;">{{ val }}</span>
+                            {% endif %}
+                        {% else %}
+                            <span style="color: #777777;">—</span>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% elif result %}
+    <div class="empty-state">
+        <h4>Execução Terminada</h4>
+        <p>A instrução foi injetada com sucesso, mas o grafo não retornou dados para os parâmetros indicados.</p>
+    </div>
+    {% else %}
+    <div class="empty-state" style="background-color: #111111; border-color: #333333; color: #aaaaaa; box-shadow: inset 3px 3px 0px 0px #222222, inset -3px -3px 0px 0px #000000;">
+        <h4 style="color: #ffffff;">Consola em Espera</h4>
+        <p>Escreve os comandos SPARQL pretendidos e prime "Injetar SPARQL" para inicializar o motor de inferência.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
